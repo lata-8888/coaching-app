@@ -840,26 +840,11 @@
       return (!rf || p.role === rf) && (!q || (p.name + ' ' + p.email + ' ' + p.phone + ' ' + fmtPhone(p.phone) + ' ' + p.traits).toLowerCase().indexOf(q) > -1);
     });
     var rows = list.map(function (p) {
-      var self = p.id === S.me.id, editing = S.editPerson === p.id;
-      return '<li><div class="personhead">' + avatarHtml(p, false) + '<div style="flex:1;min-width:0"><b>' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b><div class="muted small">' + esc(fmtPhone(p.phone)) + (p.email ? ' · ' + esc(p.email) : '') + '</div></div>' +
-        '<span class="badge">' + esc(roleLabel(p.role)) + '</span></div>' +
-        (p.traits && !editing ? '<p class="small muted traits-line">' + esc(p.traits) + '</p>' : '') +
-        (p.assistantId ? '<p class="small muted" style="margin:6px 0 0">' + L('assistantOf', { name: esc((S.people.filter(function (x) { return x.id === p.assistantId; })[0] || { name: '?' }).name) }) + '</p>' : '') +
-        '<div class="personrow"><select class="input" data-role-for="' + esc(p.id) + '" aria-label="' + esc(L('roleSelect')) + '"' + (self ? ' disabled' : '') + '>' +
-        ROLES.map(function (r) { return '<option value="' + r + '"' + (p.role === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>' +
-        '<button type="button" class="mini" data-act="person-edit-toggle" data-id="' + esc(p.id) + '" aria-expanded="' + editing + '">' + (editing ? L('dismiss') : L('editPerson')) + '</button>' +
-        '<label class="mini" for="avatar-for-' + esc(p.id) + '">' + L(p.avatar ? 'photoChange' : 'photoPick') + '</label>' +
-        '<input id="avatar-for-' + esc(p.id) + '" class="visually-hidden" type="file" accept="image/*" data-avatar-for="' + esc(p.id) + '" aria-label="' + esc(L('photoTitle')) + '">' +
-        (p.avatar ? '<button type="button" class="mini" data-act="person-avatar-remove" data-id="' + esc(p.id) + '">' + L('photoRemove') + '</button>' : '') +
-        '<button type="button" class="mini" data-act="person-reset" data-id="' + esc(p.id) + '">' + L('resetPin') + '</button>' +
-        (self ? '' : '<button type="button" class="mini del" data-act="person-del" data-id="' + esc(p.id) + '">' + L('removeP') + '</button>') + '</div>' +
-        (editing ? '<form data-form="person-edit" data-id="' + esc(p.id) + '" style="margin-top:10px">' +
-          fld(L('firstName'), '<input class="input" name="first" data-keep="pe-first-' + esc(p.id) + '" value="' + esc(p.first) + '" maxlength="60" required>') +
-          fld(L('lastName'), '<input class="input" name="last" data-keep="pe-last-' + esc(p.id) + '" value="' + esc(p.last) + '" maxlength="60" required>') +
-          fld(L('gender'), genderSelect('gender', p.gender, true)) +
-          fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pe-email-' + esc(p.id) + '" value="' + esc(p.email) + '" maxlength="120" required>') +
-          fld(L('traits'), '<textarea class="input autogrow" name="traits" rows="3" maxlength="2000" data-keep="pe-traits-' + esc(p.id) + '" placeholder="' + esc(L('traitsPh')) + '">' + esc(p.traits) + '</textarea>') +
-          '<button class="btn" type="submit">' + L('nameSave') + '</button></form>' : '') + '</li>';
+      var self = p.id === S.me.id;
+      return '<li class="pcard">' + avatarHtml(p, true) +
+        '<b class="pname">' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b>' +
+        '<span class="badge">' + esc(roleLabel(p.role)) + '</span>' +
+        '<button type="button" class="mini" data-act="person-edit-toggle" data-id="' + esc(p.id) + '">' + L('editPerson') + '</button></li>';
     }).join('');
     var add = S.addPerson ? '<form data-form="person-add" style="margin-top:6px">' +
       fld(L('firstName'), '<input class="input" name="first" data-keep="pa-first" autocomplete="off" maxlength="60" required>') +
@@ -876,8 +861,38 @@
       '<select class="input" data-admin-rf="1" aria-label="' + esc(L('roleSelect')) + '"><option value="">' + esc(L('allRoles')) + '</option>' +
       ROLES.map(function (r) { return '<option value="' + r + '"' + (rf === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select></div>' +
       '<p class="small muted">' + L('peopleCount', { n: list.length }) + '</p>' +
-      '<ul class="people">' + (rows || '<li class="muted">' + L('noMatch') + '</li>') + '</ul></section>' +
-      '<section class="panel"><button type="button" class="btn ghost" data-act="person-add-toggle" aria-expanded="' + S.addPerson + '">' + (S.addPerson ? L('dismiss') : L('personAdd')) + '</button>' + add + '</section>';
+      '<ul class="people pgrid">' + (rows || '<li class="muted nomatch">' + L('noMatch') + '</li>') + '</ul></section>' +
+      '<section class="panel"><button type="button" class="btn ghost" data-act="person-add-toggle" aria-expanded="' + S.addPerson + '">' + (S.addPerson ? L('dismiss') : L('personAdd')) + '</button>' + add + '</section>' +
+      (S.editPerson ? personSheetHtml() : '');
+  }
+  // Bearbeiten-Blatt einer Person: alle Änderungsmöglichkeiten an einem Ort
+  function personSheetHtml() {
+    var p = S.people.filter(function (x) { return x.id === S.editPerson; })[0];
+    if (!p) return '';
+    var self = p.id === S.me.id;
+    return '<div class="sheetwrap" data-act="person-sheet-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(p.name) + '">' +
+      '<div class="sheethead"><h2>' + esc(p.name) + '</h2><button type="button" class="iconbtn" data-act="person-sheet-close" aria-label="' + esc(L('close')) + '">' + ICON.x + '</button></div>' +
+      '<div class="sheetbody">' +
+      '<div class="pshead">' + avatarHtml(p, true) + '<div class="psmeta"><span class="badge">' + esc(roleLabel(p.role)) + '</span>' +
+        '<span class="small muted">' + esc(fmtPhone(p.phone)) + '</span><span class="small muted">' + esc(p.email) + '</span></div></div>' +
+      '<div class="personrow">' +
+        '<label class="mini" for="avatar-for-' + esc(p.id) + '">' + L(p.avatar ? 'photoChange' : 'photoPick') + '</label>' +
+        '<input id="avatar-for-' + esc(p.id) + '" class="visually-hidden" type="file" accept="image/*" data-avatar-for="' + esc(p.id) + '" aria-label="' + esc(L('photoTitle')) + '">' +
+        (p.avatar ? '<button type="button" class="mini" data-act="person-avatar-remove" data-id="' + esc(p.id) + '">' + L('photoRemove') + '</button>' : '') + '</div>' +
+      fld(L('roleSelect'), '<select class="input" data-role-for="' + esc(p.id) + '"' + (self ? ' disabled' : '') + '>' +
+        ROLES.map(function (r) { return '<option value="' + r + '"' + (p.role === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>') +
+      '<form data-form="person-edit" data-id="' + esc(p.id) + '">' +
+        fld(L('firstName'), '<input class="input" name="first" data-keep="pe-first-' + esc(p.id) + '" value="' + esc(p.first) + '" maxlength="60" required>') +
+        fld(L('lastName'), '<input class="input" name="last" data-keep="pe-last-' + esc(p.id) + '" value="' + esc(p.last) + '" maxlength="60" required>') +
+        fld(L('gender'), genderSelect('gender', p.gender, true)) +
+        fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pe-email-' + esc(p.id) + '" value="' + esc(p.email) + '" maxlength="120" required>') +
+        fld(L('traits'), '<textarea class="input autogrow" name="traits" rows="3" maxlength="2000" data-keep="pe-traits-' + esc(p.id) + '" placeholder="' + esc(L('traitsPh')) + '">' + esc(p.traits) + '</textarea>') +
+        (p.assistantId ? '<p class="small muted">' + L('assistantOf', { name: esc((S.people.filter(function (x) { return x.id === p.assistantId; })[0] || { name: '?' }).name) }) + '</p>' : '') +
+        '<button class="btn" type="submit">' + L('nameSave') + '</button></form>' +
+      '<div class="dangerzone">' +
+        '<button type="button" class="mini" data-act="person-reset" data-id="' + esc(p.id) + '">' + L('resetPin') + '</button>' +
+        (self ? '' : '<button type="button" class="mini del" data-act="person-del" data-id="' + esc(p.id) + '">' + L('removeP') + '</button>') + '</div>' +
+      '</div></div></div>';
   }
   function addressSelect() {
     return '<select class="input" data-addr="1" aria-label="' + esc(L('addressTitle')) + '">' +
@@ -1251,11 +1266,18 @@
       return;
     }
     if (a === 'person-edit-toggle' && S.me.role === 'admin') {
-      S.editPerson = S.editPerson === D.id ? null : D.id;
+      S.editPerson = D.id;
       Object.keys(S.drafts).forEach(function (k) { if (/^pe-/.test(k)) delete S.drafts[k]; });
       render();
       return;
     }
+    if (a === 'person-sheet-close' || (a === 'person-sheet-bg' && e.target === el)) {
+      S.editPerson = null;
+      Object.keys(S.drafts).forEach(function (k) { if (/^pe-/.test(k)) delete S.drafts[k]; });
+      render();
+      return;
+    }
+    if (a === 'person-sheet-bg') return;
     if (a === 'person-reset') {
       var who = S.people.filter(function (p) { return p.id === D.id; })[0]; if (!who) return;
       if (!(await askConfirm(L('resetPin'), L('confirmResetPin', { name: who.name }), false))) return;
@@ -1265,6 +1287,7 @@
     if (a === 'person-del') {
       var rm = S.people.filter(function (p) { return p.id === D.id; })[0]; if (!rm || rm.id === S.me.id) return;
       if (!(await askConfirm(L('removeP'), L('confirmRemove', { name: rm.name }), true))) return;
+      S.editPerson = null;
       await act(function () { return sb.rpc('remove_member', { target: D.id }); }, L('memberRemoved'));
       return;
     }
@@ -1490,7 +1513,10 @@
   // Der Senden-Knopf nimmt dem Eingabefeld den Fokus nicht weg (Tastatur bleibt offen)
   document.addEventListener('mousedown', function (e) { if (e.target.closest && e.target.closest('.sendbtn, .chip')) e.preventDefault(); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && S.pick && !$('dlg')) { S.pick = null; render(); }
+    if (e.key === 'Escape' && !$('dlg')) {
+      if (S.pick) { S.pick = null; render(); }
+      else if (S.editPerson) { S.editPerson = null; render(); }
+    }
   });
 
   /* ---------- Installation & Start ---------- */

@@ -302,3 +302,17 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
   border: 1.5px solid var(--line); background: transparent; color: var(--ink); font: inherit; }
 .assistant-card.on { border-color: var(--ink); background: var(--bg); }
 .assistant-card .acbody { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+
+/* Personen als Karten */
+.people.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.people.pgrid li.pcard { border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px 12px; background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.people.pgrid li:last-child { border-bottom: 1px solid var(--line); }
+.people.pgrid li.nomatch { grid-column: 1 / -1; border: 0; background: none; }
+.pcard .avatar.big { width: 72px; height: 72px; font-size: 1.5rem; }
+.pcard .pname { overflow-wrap: anywhere; line-height: 1.25; }
+.pcard .mini { margin-top: 4px; }
+.sheetbody { overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.pshead { display: flex; align-items: center; gap: 14px; }
+.psmeta { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 0; overflow-wrap: anywhere; }
+.dangerzone { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--line); }

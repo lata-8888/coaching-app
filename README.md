@@ -17,7 +17,7 @@ Eine PRD-Umgebung gibt es noch nicht.
 | **Chat** | Gespräch zwischen Coach-Bot und Talent im Messenger-Stil. Der Bot führt durch Thema → drei Fragen → Angebot, hält auf Wunsch eine Notiz fest oder legt den nächsten Schritt in Prep. Jede Nachricht lässt sich antippen und per «Als Notiz» / «In Prep» übernehmen. |
 | **Notes** | Gedanken und Notizen mit Zeitstempel. Der Titel entsteht automatisch aus dem Inhalt und lässt sich von Hand überschreiben (leer lassen = wieder automatisch). |
 | **Prep** | Checkliste / Agenda für ein Meeting. Punkte von Hand erfassen oder aus Chat und Notes übernehmen; die Herkunft bleibt als Chip sichtbar und springt zur Quelle. Erledigen, sortieren, bearbeiten, Erledigte entfernen. |
-| **Admin** (nur Admins) | Teilnehmer verwalten: suchen, nach Rolle filtern, Stammdaten bearbeiten (Vorname, Nachname, Geschlecht, E-Mail, Eigenschaften), Rolle ändern, Profilbild setzen, PIN zurücksetzen, Person anlegen oder entfernen. |
+| **Admin** (nur Admins) | Teilnehmer als Karten (Bild, Name, Rolle, Edit-Knopf); suchen, nach Rolle filtern. Der Edit-Knopf öffnet ein Blatt mit allen Änderungen: Stammdaten bearbeiten (Vorname, Nachname, Geschlecht, E-Mail, Eigenschaften), Rolle ändern, Profilbild setzen, PIN zurücksetzen, Person anlegen oder entfernen. |
 | **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, Geschlecht, E-Mail, Profilbild, Handynummer (mit Ländervorwahl), PIN, Anrede (Du oder Sie). Talente wählen hier ausserdem ihren Assistenten.  |
 
 ## Personendaten
