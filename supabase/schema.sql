@@ -30,6 +30,7 @@ create table if not exists public.profiles (
   name        text generated always as (trim(first_name) || ' ' || trim(last_name)) stored,
   gender      text not null check (gender in ('m', 'w', 'x')),   -- männlich / weiblich / divers
   avatar      text check (avatar is null or (avatar like 'data:image/jpeg;base64,%' and length(avatar) <= 120000)),  -- Profilbild (klein, im Browser verkleinert)
+  traits      text check (traits is null or length(traits) <= 2000),   -- Eigenschaften (Freitext)
   phone       text not null unique,                 -- Login-Name (zusammen mit dem PIN)
   email       text not null check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),  -- Kontakt-Adresse, nicht für den Login
   role        text not null default 'talent' check (role in ('admin', 'mentor', 'talent')),
@@ -79,6 +80,14 @@ begin
     alter table public.profiles add column avatar text;
     alter table public.profiles
       add constraint profiles_avatar_chk check (avatar is null or (avatar like 'data:image/jpeg;base64,%' and length(avatar) <= 120000));
+  end if;
+end $$;
+
+do $$
+begin
+  if not exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'profiles' and column_name = 'traits') then
+    alter table public.profiles add column traits text;
+    alter table public.profiles add constraint profiles_traits_chk check (traits is null or length(traits) <= 2000);
   end if;
 end $$;
 
@@ -253,6 +262,21 @@ begin
   update public.profiles set avatar = new_avatar where id = target;   -- Format/Grösse prüft die Tabelle
 end;
 $$;
+-- Eigenschaften (Freitext) setzen: die Person selbst oder ein Admin für beliebige Personen.
+create or replace function public.set_traits(target uuid, new_traits text)
+returns void
+language plpgsql security definer set search_path = public
+as $$
+begin
+  if auth.uid() is null or (target <> auth.uid() and not public.is_admin()) then
+    raise exception 'Keine Berechtigung';
+  end if;
+  update public.profiles set traits = nullif(trim(new_traits), '') where id = target;
+end;
+$$;
+revoke execute on function public.set_traits(uuid, text) from public, anon;
+grant  execute on function public.set_traits(uuid, text) to authenticated;
+
 revoke execute on function public.set_avatar(uuid, text) from public, anon;
 grant  execute on function public.set_avatar(uuid, text) to authenticated;
 
@@ -338,7 +362,7 @@ create policy "profiles_select" on public.profiles
   for select to authenticated using (id = auth.uid() or public.is_admin());
 
 -- Ändern darf jede Person nur Vorname, Nachname, Geschlecht, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
--- Rolle, Handynummer und Profilbild laufen ausschliesslich über die Funktionen set_role / update_own_phone / set_avatar.
+-- Rolle, Handynummer, Profilbild und Eigenschaften laufen ausschliesslich über die Funktionen set_role / update_own_phone / set_avatar / set_traits.
 drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own" on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());

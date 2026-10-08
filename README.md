@@ -21,7 +21,7 @@ Eine PRD-Umgebung gibt es noch nicht.
 
 ## Personendaten
 
-Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig. Jede Person ändert ihr Bild im Profil selbst; Admins können es zusätzlich für alle Personen setzen oder entfernen (Profil → Personen). Beides läuft über die Funktion `set_avatar`.
+Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Dazu kommt ein Freitextfeld «Eigenschaften» (`profiles.traits`, höchstens 2000 Zeichen), das die Person selbst und Admins bearbeiten können (RPC `set_traits`). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig. Jede Person ändert ihr Bild im Profil selbst; Admins können es zusätzlich für alle Personen setzen oder entfernen (Profil → Personen). Beides läuft über die Funktion `set_avatar`.
 
 ## Rollen
 

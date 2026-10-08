@@ -286,3 +286,5 @@ textarea.input { resize: vertical; min-height: 96px; line-height: 1.4; }
 .personhead { gap: 12px; }
 label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .personrow { flex-wrap: wrap; }
+
+.traits-line { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
