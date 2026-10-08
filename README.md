@@ -18,11 +18,17 @@ Eine PRD-Umgebung gibt es noch nicht.
 | **Notes** | Gedanken und Notizen mit Zeitstempel. Der Titel entsteht automatisch aus dem Inhalt und lässt sich von Hand überschreiben (leer lassen = wieder automatisch). |
 | **Prep** | Checkliste / Agenda für ein Meeting. Punkte von Hand erfassen oder aus Chat und Notes übernehmen; die Herkunft bleibt als Chip sichtbar und springt zur Quelle. Erledigen, sortieren, bearbeiten, Erledigte entfernen. |
 | **Admin** (nur Admins) | Teilnehmer verwalten: suchen, nach Rolle filtern, Stammdaten bearbeiten (Vorname, Nachname, Geschlecht, E-Mail, Eigenschaften), Rolle ändern, Profilbild setzen, PIN zurücksetzen, Person anlegen oder entfernen. |
-| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, Geschlecht, E-Mail, Profilbild, Handynummer, PIN.  |
+| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, Geschlecht, E-Mail, Profilbild, Handynummer (mit Ländervorwahl), PIN, Anrede (Du oder Sie). Talente wählen hier ausserdem ihren Assistenten.  |
 
 ## Personendaten
 
 Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Dazu kommt ein Freitextfeld «Eigenschaften» (`profiles.traits`, höchstens 2000 Zeichen), das die Person selbst und Admins bearbeiten können (RPC `set_traits`). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig. Jede Person ändert ihr Bild im Profil selbst; Admins können es zusätzlich für alle Personen setzen oder entfernen (Tab Admin). Beides läuft über die Funktion `set_avatar`.
+
+## Anmeldung, Anrede, Assistent
+
+- **Telefonfeld:** Links wählt man das Land mit Vorwahl (Standard Schweiz, die letzte Wahl wird gemerkt), rechts steht die restliche Nummer. Eine führende 0 wird ignoriert; auch eine ganze Nummer mit «+» oder «00» im rechten Feld wird erkannt. Dasselbe Feld gilt beim Nummernwechsel im Profil und beim Anlegen einer Person.
+- **Anrede (Du/Sie):** Im Profil neben der Sprache wählbar (`profiles.address_form`). Sie gilt für App-Texte und Bot-Nachrichten in Deutsch, Französisch (tu/vous) und Italienisch (tu/Lei); Englisch kennt keinen Unterschied. Bereits geschriebene Bot-Nachrichten ändern sich nicht nachträglich.
+- **Assistent:** Jedes Talent wählt im Profil einen Assistenten (`profiles.assistant_id`). Die Liste liefert die Funktion `list_assistants`, gespeichert wird über `set_assistant`. Admins sehen die Wahl in der Personenliste.
 
 ## Rollen
 

@@ -79,7 +79,7 @@
       installTitle: 'App installieren', installHint: 'Lege die App auf deinen Startbildschirm, dann öffnet sie sich im Vollbild.',
       installBtn: 'Auf dem Startbildschirm speichern', installIos: 'Tippe in Safari auf «Teilen» und dann auf «Zum Home-Bildschirm».', logout: 'Abmelden',
       peopleTitle: 'Personen', peopleHint: 'Nur für Admins sichtbar. Hier legst du Personen an und vergibst Rollen.', personAdd: 'Person hinzufügen',
-      firstName: 'Vorname', lastName: 'Nachname', email: 'E-Mail', emailInvalid: 'Bitte eine gültige E-Mail-Adresse eingeben.', gender: 'Geschlecht', genderM: 'männlich', genderW: 'weiblich', genderX: 'divers', genderInvalid: 'Bitte ein Geschlecht wählen.', photoTitle: 'Profilbild', photoPick: 'Foto wählen', photoChange: 'Foto ändern', photoRemove: 'Foto entfernen', photoSaved: 'Foto gespeichert', photoRemoved: 'Foto entfernt', photoFail: 'Das Bild konnte nicht verwendet werden.', traits: 'Eigenschaften', traitsHint: 'Stichworte oder Sätze, z. B. Stärken, Interessen, Besonderheiten. Admins können das ebenfalls sehen und bearbeiten.', traitsPh: 'Frei formulieren …', traitsSave: 'Eigenschaften speichern', traitsSaved: 'Eigenschaften gespeichert', navAdmin: 'Admin', adminTitle: 'Teilnehmer verwalten', adminSearch: 'Name, E-Mail, Nummer suchen …', allRoles: 'Alle Rollen', peopleCount: '{n} Personen', noMatch: 'Keine Treffer.', editPerson: 'Bearbeiten', personSaved: 'Person gespeichert', memberAddNote: 'Die Person meldet sich mit der Handynummer an. Der PIN sind die letzten 6 Ziffern.',
+      firstName: 'Vorname', lastName: 'Nachname', email: 'E-Mail', emailInvalid: 'Bitte eine gültige E-Mail-Adresse eingeben.', gender: 'Geschlecht', genderM: 'männlich', genderW: 'weiblich', genderX: 'divers', genderInvalid: 'Bitte ein Geschlecht wählen.', photoTitle: 'Profilbild', photoPick: 'Foto wählen', photoChange: 'Foto ändern', photoRemove: 'Foto entfernen', photoSaved: 'Foto gespeichert', photoRemoved: 'Foto entfernt', photoFail: 'Das Bild konnte nicht verwendet werden.', traits: 'Eigenschaften', traitsHint: 'Stichworte oder Sätze, z. B. Stärken, Interessen, Besonderheiten. Admins können das ebenfalls sehen und bearbeiten.', traitsPh: 'Frei formulieren …', traitsSave: 'Eigenschaften speichern', traitsSaved: 'Eigenschaften gespeichert', navAdmin: 'Admin', adminTitle: 'Teilnehmer verwalten', adminSearch: 'Name, E-Mail, Nummer suchen …', allRoles: 'Alle Rollen', peopleCount: '{n} Personen', noMatch: 'Keine Treffer.', editPerson: 'Bearbeiten', personSaved: 'Person gespeichert', country: 'Land / Vorwahl', assistantTitle: 'Mein Assistent', assistantHint: 'Wähle den Assistenten, der dich begleitet.', assistantNone: 'Keinen Assistenten', assistantSaved: 'Assistent gespeichert', assistantEmpty: 'Noch keine Assistenten verfügbar.', assistantOf: 'Assistent: {name}', addressTitle: 'Anrede', addressHint: 'Wie sollen wir dich ansprechen?', addressInformal: 'Du', addressFormal: 'Sie', addressSaved: 'Anrede gespeichert', assistantHintF: 'Wählen Sie den Assistenten, der Sie begleitet.', addressHintF: 'Wie sollen wir Sie ansprechen?', loginLeadF: 'Melden Sie sich mit Ihrer Handynummer an. Solange Sie keinen eigenen PIN gesetzt haben, gelten die letzten 6 Ziffern Ihrer Nummer.', chatSubF: 'Mit Ihrem Coach', botGreetF: 'Guten Tag {name}! Schön, dass Sie da sind. Worüber möchten Sie heute sprechen?', topicIntro_goalF: 'Gut, lassen Sie uns Ihr Ziel schärfen.', topicIntro_blockedF: 'Danke, dass Sie das ansprechen. Gehen wir es Schritt für Schritt an.', topicIntro_meetingF: 'Gerne, bereiten wir Ihr Meeting vor.', topicIntro_otherF: 'Danke, dass Sie das teilen. Ich höre zu.', botQ1F: 'Was genau beschäftigt Sie dabei, und was wäre für Sie ein gutes Ergebnis?', botQ2F: 'Was hat Sie bisher davon abgehalten, oder was macht es schwierig?', botQ3F: 'Was ist der kleinste nächste Schritt, den Sie diese Woche machen könnten?', botOfferF: 'Danke, das ergibt ein klares Bild. Soll ich Ihnen etwas davon festhalten?', botNoteSavedF: 'Erledigt, die Notiz finden Sie unter «Notes».', botNewTopicF: 'Gerne. Was möchten Sie als Nächstes anschauen?', botNothingF: 'Dazu habe ich noch nichts zum Festhalten. Erzählen Sie mir zuerst etwas.', notePlaceholderF: 'Was geht Ihnen durch den Kopf?', notesEmptyF: 'Noch keine Notizen. Schreiben Sie Ihren ersten Gedanken auf.', prepSubF: 'Ihre Agenda und Checkliste', youLabelF: 'Sie', youF: '(Sie)', phoneChangeNoteF: 'Sie melden sich danach mit der neuen Nummer an. Ihr PIN bleibt gleich.', pinIntroF: 'Wählen Sie einen eigenen PIN aus 6 Ziffern. Er schützt Ihre Notizen und Gespräche.', pinBannerMsgF: 'Bitte setzen Sie Ihren persönlichen PIN, damit nur Sie Zugriff haben.', installHintF: 'Legen Sie die App auf Ihren Startbildschirm, dann öffnet sie sich im Vollbild.', installIosF: 'Tippen Sie in Safari auf «Teilen» und dann auf «Zum Home-Bildschirm».', peopleHintF: 'Nur für Admins sichtbar. Hier legen Sie Personen an und vergeben Rollen.', memberAddNote: 'Die Person meldet sich mit der Handynummer an. Der PIN sind die letzten 6 Ziffern.',
       memberAdded: '{name} hinzugefügt', addFailed: 'Hinzufügen nicht möglich: {reason}', alreadyReg: 'Diese Handynummer ist schon registriert.', unknownError: 'unbekannter Fehler',
       resetPin: 'PIN zurücksetzen', confirmResetPin: 'PIN von {name} auf die letzten 6 Ziffern der Handynummer zurücksetzen?', pinReset: 'PIN zurückgesetzt',
       removeP: 'Entfernen', confirmRemove: '{name} entfernen? Konto, Gespräche, Notizen und Prep-Punkte werden gelöscht.', memberRemoved: 'Person entfernt',
@@ -139,7 +139,7 @@
       installTitle: 'Install app', installHint: 'Add the app to your home screen and it opens in full screen.',
       installBtn: 'Add to home screen', installIos: 'In Safari, tap “Share” and then “Add to Home Screen”.', logout: 'Sign out',
       peopleTitle: 'People', peopleHint: 'Visible to admins only. Add people and assign roles here.', personAdd: 'Add person',
-      firstName: 'First name', lastName: 'Last name', email: 'Email', emailInvalid: 'Please enter a valid email address.', gender: 'Gender', genderM: 'male', genderW: 'female', genderX: 'other', genderInvalid: 'Please select a gender.', photoTitle: 'Profile picture', photoPick: 'Choose photo', photoChange: 'Change photo', photoRemove: 'Remove photo', photoSaved: 'Photo saved', photoRemoved: 'Photo removed', photoFail: 'The image could not be used.', traits: 'Traits', traitsHint: 'Keywords or sentences, e.g. strengths, interests, particularities. Admins can see and edit this too.', traitsPh: 'Write freely …', traitsSave: 'Save traits', traitsSaved: 'Traits saved', navAdmin: 'Admin', adminTitle: 'Manage participants', adminSearch: 'Search name, email, number …', allRoles: 'All roles', peopleCount: '{n} people', noMatch: 'No matches.', editPerson: 'Edit', personSaved: 'Person saved', memberAddNote: 'The person signs in with their mobile number. The PIN is the last 6 digits.',
+      firstName: 'First name', lastName: 'Last name', email: 'Email', emailInvalid: 'Please enter a valid email address.', gender: 'Gender', genderM: 'male', genderW: 'female', genderX: 'other', genderInvalid: 'Please select a gender.', photoTitle: 'Profile picture', photoPick: 'Choose photo', photoChange: 'Change photo', photoRemove: 'Remove photo', photoSaved: 'Photo saved', photoRemoved: 'Photo removed', photoFail: 'The image could not be used.', traits: 'Traits', traitsHint: 'Keywords or sentences, e.g. strengths, interests, particularities. Admins can see and edit this too.', traitsPh: 'Write freely …', traitsSave: 'Save traits', traitsSaved: 'Traits saved', navAdmin: 'Admin', adminTitle: 'Manage participants', adminSearch: 'Search name, email, number …', allRoles: 'All roles', peopleCount: '{n} people', noMatch: 'No matches.', editPerson: 'Edit', personSaved: 'Person saved', country: 'Country / dial code', assistantTitle: 'My assistant', assistantHint: 'Choose the assistant who accompanies you.', assistantNone: 'No assistant', assistantSaved: 'Assistant saved', assistantEmpty: 'No assistants available yet.', assistantOf: 'Assistant: {name}', addressTitle: 'Form of address', addressHint: 'How should we address you?', addressInformal: 'Informal', addressFormal: 'Formal', addressSaved: 'Form of address saved', memberAddNote: 'The person signs in with their mobile number. The PIN is the last 6 digits.',
       memberAdded: '{name} added', addFailed: 'Could not add: {reason}', alreadyReg: 'This mobile number is already registered.', unknownError: 'unknown error',
       resetPin: 'Reset PIN', confirmResetPin: 'Reset the PIN of {name} to the last 6 digits of the mobile number?', pinReset: 'PIN reset',
       removeP: 'Remove', confirmRemove: 'Remove {name}? Account, conversations, notes and Prep items will be deleted.', memberRemoved: 'Person removed',
@@ -199,7 +199,7 @@
       installTitle: 'Installer l’application', installHint: 'Ajoute l’application à ton écran d’accueil, elle s’ouvrira alors en plein écran.',
       installBtn: 'Ajouter à l’écran d’accueil', installIos: 'Dans Safari, touche « Partager », puis « Sur l’écran d’accueil ».', logout: 'Se déconnecter',
       peopleTitle: 'Personnes', peopleHint: 'Visible uniquement pour les admins. Ici, tu crées des personnes et attribues des rôles.', personAdd: 'Ajouter une personne',
-      firstName: 'Prénom', lastName: 'Nom de famille', email: 'E-mail', emailInvalid: 'Veuillez saisir une adresse e-mail valide.', gender: 'Genre', genderM: 'homme', genderW: 'femme', genderX: 'autre', genderInvalid: 'Veuillez choisir un genre.', photoTitle: 'Photo de profil', photoPick: 'Choisir une photo', photoChange: 'Changer la photo', photoRemove: 'Supprimer la photo', photoSaved: 'Photo enregistrée', photoRemoved: 'Photo supprimée', photoFail: 'L’image n’a pas pu être utilisée.', traits: 'Caractéristiques', traitsHint: 'Mots-clés ou phrases, p. ex. points forts, centres d’intérêt, particularités. Les admins peuvent aussi les voir et les modifier.', traitsPh: 'Écris librement …', traitsSave: 'Enregistrer les caractéristiques', traitsSaved: 'Caractéristiques enregistrées', navAdmin: 'Admin', adminTitle: 'Gérer les participants', adminSearch: 'Rechercher nom, e-mail, numéro …', allRoles: 'Tous les rôles', peopleCount: '{n} personnes', noMatch: 'Aucun résultat.', editPerson: 'Modifier', personSaved: 'Personne enregistrée', memberAddNote: 'La personne se connecte avec son numéro de mobile. Le PIN correspond aux 6 derniers chiffres.',
+      firstName: 'Prénom', lastName: 'Nom de famille', email: 'E-mail', emailInvalid: 'Veuillez saisir une adresse e-mail valide.', gender: 'Genre', genderM: 'homme', genderW: 'femme', genderX: 'autre', genderInvalid: 'Veuillez choisir un genre.', photoTitle: 'Photo de profil', photoPick: 'Choisir une photo', photoChange: 'Changer la photo', photoRemove: 'Supprimer la photo', photoSaved: 'Photo enregistrée', photoRemoved: 'Photo supprimée', photoFail: 'L’image n’a pas pu être utilisée.', traits: 'Caractéristiques', traitsHint: 'Mots-clés ou phrases, p. ex. points forts, centres d’intérêt, particularités. Les admins peuvent aussi les voir et les modifier.', traitsPh: 'Écris librement …', traitsSave: 'Enregistrer les caractéristiques', traitsSaved: 'Caractéristiques enregistrées', navAdmin: 'Admin', adminTitle: 'Gérer les participants', adminSearch: 'Rechercher nom, e-mail, numéro …', allRoles: 'Tous les rôles', peopleCount: '{n} personnes', noMatch: 'Aucun résultat.', editPerson: 'Modifier', personSaved: 'Personne enregistrée', country: 'Pays / indicatif', assistantTitle: 'Mon assistant(e)', assistantHint: 'Choisis l’assistant(e) qui t’accompagne.', assistantNone: 'Aucun(e) assistant(e)', assistantSaved: 'Assistant(e) enregistré(e)', assistantEmpty: 'Aucun(e) assistant(e) disponible pour le moment.', assistantOf: 'Assistant(e) : {name}', addressTitle: 'Forme d’adresse', addressHint: 'Comment devons-nous nous adresser à toi ?', addressInformal: 'Tutoiement (tu)', addressFormal: 'Vouvoiement (vous)', addressSaved: 'Forme d’adresse enregistrée', assistantHintF: 'Choisissez l’assistant(e) qui vous accompagne.', addressHintF: 'Comment devons-nous nous adresser à vous ?', loginLeadF: 'Connectez-vous avec votre numéro de mobile. Tant que vous n’avez pas votre propre PIN, ce sont les 6 derniers chiffres de votre numéro qui comptent.', phoneInvalidF: 'Saisissez un numéro de mobile valide.', chatSubF: 'Avec votre coach', chatPlaceholderF: 'Écrivez un message …', botGreetF: 'Bonjour {name} ! Content de vous voir. De quoi aimeriez-vous parler aujourd’hui ?', topicIntro_goalF: 'Bien, affinons votre objectif.', topicIntro_meetingF: 'Avec plaisir, préparons votre réunion.', topicIntro_otherF: 'Merci de partager cela. Je vous écoute.', botQ1F: 'Qu’est-ce qui vous préoccupe exactement, et à quoi ressemblerait un bon résultat pour vous ?', botQ2F: 'Qu’est-ce qui a freiné votre progression jusqu’ici, ou qu’est-ce qui rend cela difficile ?', botQ3F: 'Quelle est la plus petite prochaine étape que vous pourriez faire cette semaine ?', botOfferF: 'Merci, cela donne une image claire. Souhaitez-vous que je retienne quelque chose ?', botNoteSavedF: 'C’est fait, vous trouverez la note sous « Notes ».', botNewTopicF: 'Volontiers. Que souhaitez-vous aborder ensuite ?', botNothingF: 'Je n’ai encore rien à retenir. Racontez-moi d’abord quelque chose.', notePlaceholderF: 'À quoi pensez-vous ?', notesEmptyF: 'Pas encore de notes. Notez votre première pensée.', prepSubF: 'Votre ordre du jour et votre checklist', youLabelF: 'Vous', youF: '(vous)', phoneChangeNoteF: 'Vous vous connecterez ensuite avec le nouveau numéro. Votre PIN reste le même.', pinIntroF: 'Choisissez votre propre PIN à 6 chiffres. Il protège vos notes et vos conversations.', pinBannerMsgF: 'Définissez votre PIN personnel pour que vous seul(e) y ayez accès.', installHintF: 'Ajoutez l’application à votre écran d’accueil, elle s’ouvrira alors en plein écran.', installIosF: 'Dans Safari, touchez « Partager », puis « Sur l’écran d’accueil ».', peopleHintF: 'Visible uniquement pour les admins. Ici, vous créez des personnes et attribuez des rôles.', traitsPhF: 'Écrivez librement …', memberAddNote: 'La personne se connecte avec son numéro de mobile. Le PIN correspond aux 6 derniers chiffres.',
       memberAdded: '{name} ajouté(e)', addFailed: 'Ajout impossible : {reason}', alreadyReg: 'Ce numéro est déjà enregistré.', unknownError: 'erreur inconnue',
       resetPin: 'Réinitialiser le PIN', confirmResetPin: 'Réinitialiser le PIN de {name} aux 6 derniers chiffres du numéro de mobile ?', pinReset: 'PIN réinitialisé',
       removeP: 'Retirer', confirmRemove: 'Retirer {name} ? Le compte, les conversations, les notes et les points de Prép. seront supprimés.', memberRemoved: 'Personne retirée',
@@ -259,7 +259,7 @@
       installTitle: 'Installa l’app', installHint: 'Aggiungi l’app alla schermata Home: si aprirà a schermo intero.',
       installBtn: 'Aggiungi alla schermata Home', installIos: 'In Safari tocca «Condividi» e poi «Aggiungi a Home».', logout: 'Esci',
       peopleTitle: 'Persone', peopleHint: 'Visibile solo agli admin. Qui crei persone e assegni ruoli.', personAdd: 'Aggiungi persona',
-      firstName: 'Nome', lastName: 'Cognome', email: 'E-mail', emailInvalid: 'Inserisci un indirizzo e-mail valido.', gender: 'Genere', genderM: 'maschile', genderW: 'femminile', genderX: 'altro', genderInvalid: 'Seleziona un genere.', photoTitle: 'Foto profilo', photoPick: 'Scegli foto', photoChange: 'Cambia foto', photoRemove: 'Rimuovi foto', photoSaved: 'Foto salvata', photoRemoved: 'Foto rimossa', photoFail: 'Impossibile usare l’immagine.', traits: 'Caratteristiche', traitsHint: 'Parole chiave o frasi, ad es. punti di forza, interessi, particolarità. Anche gli admin possono vederle e modificarle.', traitsPh: 'Scrivi liberamente …', traitsSave: 'Salva le caratteristiche', traitsSaved: 'Caratteristiche salvate', navAdmin: 'Admin', adminTitle: 'Gestisci i partecipanti', adminSearch: 'Cerca nome, e-mail, numero …', allRoles: 'Tutti i ruoli', peopleCount: '{n} persone', noMatch: 'Nessun risultato.', editPerson: 'Modifica', personSaved: 'Persona salvata', memberAddNote: 'La persona accede con il numero di cellulare. Il PIN sono le ultime 6 cifre.',
+      firstName: 'Nome', lastName: 'Cognome', email: 'E-mail', emailInvalid: 'Inserisci un indirizzo e-mail valido.', gender: 'Genere', genderM: 'maschile', genderW: 'femminile', genderX: 'altro', genderInvalid: 'Seleziona un genere.', photoTitle: 'Foto profilo', photoPick: 'Scegli foto', photoChange: 'Cambia foto', photoRemove: 'Rimuovi foto', photoSaved: 'Foto salvata', photoRemoved: 'Foto rimossa', photoFail: 'Impossibile usare l’immagine.', traits: 'Caratteristiche', traitsHint: 'Parole chiave o frasi, ad es. punti di forza, interessi, particolarità. Anche gli admin possono vederle e modificarle.', traitsPh: 'Scrivi liberamente …', traitsSave: 'Salva le caratteristiche', traitsSaved: 'Caratteristiche salvate', navAdmin: 'Admin', adminTitle: 'Gestisci i partecipanti', adminSearch: 'Cerca nome, e-mail, numero …', allRoles: 'Tutti i ruoli', peopleCount: '{n} persone', noMatch: 'Nessun risultato.', editPerson: 'Modifica', personSaved: 'Persona salvata', country: 'Paese / prefisso', assistantTitle: 'Il mio assistente', assistantHint: 'Scegli l’assistente che ti accompagna.', assistantNone: 'Nessun assistente', assistantSaved: 'Assistente salvato', assistantEmpty: 'Nessun assistente disponibile al momento.', assistantOf: 'Assistente: {name}', addressTitle: 'Forma di cortesia', addressHint: 'Come dobbiamo rivolgerci a te?', addressInformal: 'Tu', addressFormal: 'Lei', addressSaved: 'Forma di cortesia salvata', assistantHintF: 'Scelga l’assistente che la accompagna.', addressHintF: 'Come dobbiamo rivolgerci a Lei?', loginLeadF: 'Acceda con il Suo numero di cellulare. Finché non imposta un PIN personale valgono le ultime 6 cifre del Suo numero.', phoneInvalidF: 'Inserisca un numero di cellulare valido.', chatSubF: 'Con il Suo coach', chatPlaceholderF: 'Scriva un messaggio …', botGreetF: 'Buongiorno {name}! Piacere di averLa qui. Di cosa vorrebbe parlare oggi?', topicIntro_goalF: 'Bene, mettiamo a fuoco il Suo obiettivo.', topicIntro_meetingF: 'Volentieri, prepariamo il Suo incontro.', topicIntro_otherF: 'Grazie per averlo condiviso. La ascolto.', botQ1F: 'Cosa Le sta a cuore esattamente e quale sarebbe per Lei un buon risultato?', botQ2F: 'Che cosa ha ostacolato finora il Suo percorso, o cosa lo rende difficile?', botQ3F: 'Qual è il più piccolo passo successivo che potrebbe fare questa settimana?', botOfferF: 'Grazie, ora il quadro è chiaro. Vuole che conservi qualcosa?', botNoteSavedF: 'Fatto, trova la nota sotto «Note».', botNewTopicF: 'Volentieri. Cosa vorrebbe guardare ora?', botNothingF: 'Non ho ancora nulla da conservare. Mi racconti prima qualcosa.', notePlaceholderF: 'Cosa Le passa per la mente?', notesEmptyF: 'Ancora nessuna nota. Scriva il Suo primo pensiero.', prepSubF: 'La Sua agenda e checklist', youLabelF: 'Lei', youF: '(Lei)', phoneChangeNoteF: 'Poi accederà con il nuovo numero. Il Suo PIN resta uguale.', pinIntroF: 'Scelga un PIN personale di 6 cifre. Protegge le Sue note e conversazioni.', pinBannerMsgF: 'Imposti il Suo PIN personale, così solo Lei ha accesso.', installHintF: 'Aggiunga l’app alla schermata Home: si aprirà a schermo intero.', installIosF: 'In Safari tocchi «Condividi» e poi «Aggiungi a Home».', peopleHintF: 'Visibile solo agli admin. Qui crea persone e assegna ruoli.', traitsPhF: 'Scriva liberamente …', emailInvalidF: 'Inserisca un indirizzo e-mail valido.', prepAddPhF: 'Aggiunga un punto …', memberAddNote: 'La persona accede con il numero di cellulare. Il PIN sono le ultime 6 cifre.',
       memberAdded: '{name} aggiunto/a', addFailed: 'Impossibile aggiungere: {reason}', alreadyReg: 'Questo numero è già registrato.', unknownError: 'errore sconosciuto',
       resetPin: 'Reimposta PIN', confirmResetPin: 'Reimpostare il PIN di {name} sulle ultime 6 cifre del numero di cellulare?', pinReset: 'PIN reimpostato',
       removeP: 'Rimuovi', confirmRemove: 'Rimuovere {name}? Account, conversazioni, note e punti Prep verranno eliminati.', memberRemoved: 'Persona rimossa',
@@ -273,8 +273,15 @@
     var n = String(navigator.language || 'de').toLowerCase().slice(0, 2);
     return LANGS.indexOf(n) > -1 ? n : 'de';
   }
+  var formal = false;
+  try { formal = localStorage.getItem('coaching-form') === 'formal'; } catch (e) { /* ignorieren */ }
+  function setFormal(f) {
+    formal = !!f;
+    try { localStorage.setItem('coaching-form', formal ? 'formal' : 'informal'); } catch (e) { /* ignorieren */ }
+  }
   function L(key, p) {
-    var s = (DICT[lang] && DICT[lang][key]) || DICT.de[key] || key;
+    var d = DICT[lang] || {};
+    var s = (formal && lang !== 'en' && d[key + 'F']) || d[key] || DICT.de[key] || key;
     if (p) s = s.replace(/\{(\w+)\}/g, function (m, k) { return p[k] != null ? p[k] : m; });
     return s;
   }
@@ -407,6 +414,30 @@
     }
     return v;
   }
+  // Länder mit Vorwahl für das Telefonfeld (Auswahl links, Rest der Nummer rechts)
+  var COUNTRIES = [['CH', 41], ['DE', 49], ['AT', 43], ['LI', 423], ['FR', 33], ['IT', 39], ['ES', 34], ['PT', 351], ['NL', 31], ['BE', 32], ['LU', 352], ['GB', 44], ['IE', 353],
+    ['DK', 45], ['SE', 46], ['NO', 47], ['FI', 358], ['PL', 48], ['CZ', 420], ['SK', 421], ['HU', 36], ['SI', 386], ['HR', 385], ['RS', 381], ['RO', 40], ['BG', 359], ['GR', 30],
+    ['TR', 90], ['UA', 380], ['RU', 7], ['US', 1], ['CA', 1], ['MX', 52], ['BR', 55], ['AR', 54], ['AU', 61], ['NZ', 64], ['IN', 91], ['CN', 86], ['JP', 81], ['KR', 82],
+    ['AE', 971], ['IL', 972], ['ZA', 27], ['EG', 20]];
+  function dialOf(iso) { for (var i = 0; i < COUNTRIES.length; i++) if (COUNTRIES[i][0] === iso) return COUNTRIES[i][1]; return 0; }
+  function countryName(iso) { try { return new Intl.DisplayNames([lang], { type: 'region' }).of(iso) || iso; } catch (e) { return iso; } }
+  function defaultCountry() {
+    try { var c = localStorage.getItem('coaching-cc'); if (c && dialOf(c)) return c; } catch (e) { /* ignorieren */ }
+    return 'CH';
+  }
+  function phoneField(keep, required) {
+    var cur = S.drafts['cc-' + keep] || defaultCountry();
+    return '<div class="phonerow"><select class="input" name="cc" data-cc="1" data-keep="cc-' + keep + '" aria-label="' + esc(L('country')) + '">' +
+      COUNTRIES.map(function (c) { return '<option value="' + c[0] + '"' + (c[0] === cur ? ' selected' : '') + '>' + c[0] + ' +' + c[1] + ' · ' + esc(countryName(c[0])) + '</option>'; }).join('') +
+      '</select><input class="input" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="79 123 45 67" data-keep="' + keep + '"' + (required ? ' required' : '') + '></div>';
+  }
+  // Vorwahl (links) + restliche Nummer (rechts) zu +<Vorwahl><Nummer> zusammensetzen
+  function combinedPhone(f) {
+    var nat = String(f.get('phone') || '').trim();
+    if (/^(\+|00)/.test(nat)) return nat;
+    var digits = nat.replace(/\(0\)/g, '').replace(/\D/g, '').replace(/^0+/, '');
+    return digits ? '+' + dialOf(f.get('cc') || 'CH') + digits : '';
+  }
   function defaultPin(p) { return String(p).replace(/\D/g, '').slice(-6); }
   function phoneToEmail(p) { return p.replace('+', '') + '@' + (cfg.EMAIL_DOMAIN || 'phone-login.app'); }
 
@@ -437,7 +468,7 @@
     return {
       step: 'loading', tab: 'chat', phone: '', err: '', busy: false, typing: false, stick: false,
       session: null, me: null, people: [], chat: [], notes: [], prep: [],
-      drafts: {}, sel: null, openNotes: {}, editNote: null, prepEdit: false, pick: null, flash: null, addPerson: false, editPerson: null, q: '', roleFilter: '', greeting: false
+      drafts: {}, sel: null, openNotes: {}, editNote: null, prepEdit: false, pick: null, flash: null, addPerson: false, assistants: [], editPerson: null, q: '', roleFilter: '', greeting: false
     };
   }
   var S = freshState();
@@ -445,7 +476,7 @@
 
   /* ---------- Daten laden ---------- */
   function mapProfile(r) {
-    return { id: r.id, first: r.first_name, gender: ['m', 'w', 'x'].indexOf(r.gender) > -1 ? r.gender : 'x', avatar: r.avatar || '', traits: r.traits || '', last: r.last_name, name: r.name || ((r.first_name || '') + ' ' + (r.last_name || '')).trim(), email: r.email || '', phone: r.phone, role: ROLES.indexOf(r.role) > -1 ? r.role : 'talent', language: r.language || null, theme: r.theme || null, pinChanged: r.pin_changed === true };
+    return { id: r.id, first: r.first_name, gender: ['m', 'w', 'x'].indexOf(r.gender) > -1 ? r.gender : 'x', avatar: r.avatar || '', addressForm: r.address_form === 'formal' ? 'formal' : 'informal', assistantId: r.assistant_id || null, traits: r.traits || '', last: r.last_name, name: r.name || ((r.first_name || '') + ' ' + (r.last_name || '')).trim(), email: r.email || '', phone: r.phone, role: ROLES.indexOf(r.role) > -1 ? r.role : 'talent', language: r.language || null, theme: r.theme || null, pinChanged: r.pin_changed === true };
   }
   async function loadAll() {
     var uid = S.session.user.id;
@@ -459,6 +490,12 @@
     if (bad) throw bad.error;
     S.people = (res[0].data || []).map(mapProfile).sort(function (a, b) { return a.name.localeCompare(b.name, lang); });
     S.me = S.people.filter(function (p) { return p.id === uid; })[0] || null;
+    if (S.me) setFormal(S.me.addressForm === 'formal');
+    S.assistants = [];
+    if (S.me && S.me.role === 'talent') {
+      var ar = await sb.rpc('list_assistants');
+      if (!ar.error) S.assistants = (ar.data || []).map(function (r) { return { id: r.id, first: r.first_name, last: r.last_name, name: r.first_name + ' ' + r.last_name, avatar: r.avatar || '', traits: r.traits || '' }; });
+    }
     S.chat = (res[1].data || []).slice().reverse();
     S.notes = res[2].data || [];
     S.prep = res[3].data || [];
@@ -641,7 +678,7 @@
       '<img class="loginlogo" src="icon-192.png" alt=""></div>' +
       '<p class="lead">' + L('loginLead') + '</p>' +
       '<form data-form="auth">' +
-      fld(L('phone'), '<input class="input" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="079 123 45 67" data-keep="phone" required>') +
+      fld(L('phone'), phoneField('phone', true)) +
       fld(L('pinOptional'), '<input class="input pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="current-password" placeholder="······" data-keep="loginpin">') +
       (S.err ? '<p class="err" role="alert">' + esc(S.err) + '</p>' : '') +
       '<button class="btn" type="submit"' + (S.busy ? ' disabled' : '') + '>' + L('signIn') + '</button>' +
@@ -807,6 +844,7 @@
       return '<li><div class="personhead">' + avatarHtml(p, false) + '<div style="flex:1;min-width:0"><b>' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b><div class="muted small">' + esc(fmtPhone(p.phone)) + (p.email ? ' · ' + esc(p.email) : '') + '</div></div>' +
         '<span class="badge">' + esc(roleLabel(p.role)) + '</span></div>' +
         (p.traits && !editing ? '<p class="small muted traits-line">' + esc(p.traits) + '</p>' : '') +
+        (p.assistantId ? '<p class="small muted" style="margin:6px 0 0">' + L('assistantOf', { name: esc((S.people.filter(function (x) { return x.id === p.assistantId; })[0] || { name: '?' }).name) }) + '</p>' : '') +
         '<div class="personrow"><select class="input" data-role-for="' + esc(p.id) + '" aria-label="' + esc(L('roleSelect')) + '"' + (self ? ' disabled' : '') + '>' +
         ROLES.map(function (r) { return '<option value="' + r + '"' + (p.role === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>' +
         '<button type="button" class="mini" data-act="person-edit-toggle" data-id="' + esc(p.id) + '" aria-expanded="' + editing + '">' + (editing ? L('dismiss') : L('editPerson')) + '</button>' +
@@ -827,7 +865,7 @@
       fld(L('firstName'), '<input class="input" name="first" data-keep="pa-first" autocomplete="off" maxlength="60" required>') +
       fld(L('lastName'), '<input class="input" name="last" data-keep="pa-last" autocomplete="off" maxlength="60" required>') +
       fld(L('gender'), genderSelect('gender', '', true)) +
-      fld(L('phone'), '<input class="input" name="phone" type="tel" inputmode="tel" data-keep="pa-phone" placeholder="079 123 45 67" autocomplete="off" required>') +
+      fld(L('phone'), phoneField('pa-phone', true)) +
       fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pa-email" autocomplete="off" maxlength="120" required>') +
       fld(L('roleSelect'), '<select class="input" name="role">' + ROLES.slice().reverse().map(function (r) { return '<option value="' + r + '">' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>') +
       '<p class="small muted" style="margin-bottom:12px">' + L('memberAddNote') + '</p>' +
@@ -840,6 +878,21 @@
       '<p class="small muted">' + L('peopleCount', { n: list.length }) + '</p>' +
       '<ul class="people">' + (rows || '<li class="muted">' + L('noMatch') + '</li>') + '</ul></section>' +
       '<section class="panel"><button type="button" class="btn ghost" data-act="person-add-toggle" aria-expanded="' + S.addPerson + '">' + (S.addPerson ? L('dismiss') : L('personAdd')) + '</button>' + add + '</section>';
+  }
+  function addressSelect() {
+    return '<select class="input" data-addr="1" aria-label="' + esc(L('addressTitle')) + '">' +
+      ['informal', 'formal'].map(function (v) { return '<option value="' + v + '"' + (S.me.addressForm === v ? ' selected' : '') + '>' + esc(L(v === 'formal' ? 'addressFormal' : 'addressInformal')) + '</option>'; }).join('') + '</select>';
+  }
+  function viewAssistantPick() {
+    var cur = S.me.assistantId;
+    var cards = S.assistants.map(function (a) {
+      var on = a.id === cur;
+      return '<button type="button" class="assistant-card' + (on ? ' on' : '') + '" data-act="assistant-pick" data-id="' + esc(a.id) + '" aria-pressed="' + on + '">' + avatarHtml(a, false) +
+        '<span class="acbody"><b>' + esc(a.name) + '</b>' + (a.traits ? '<span class="small muted">' + esc(a.traits) + '</span>' : '') + '</span>' + (on ? '<span class="badge">✓</span>' : '') + '</button>';
+    }).join('');
+    return '<section class="panel"><h2>' + L('assistantTitle') + '</h2><p>' + L('assistantHint') + '</p>' +
+      (cards ? '<div class="assistant-list">' + cards + '</div>' : '<p class="muted">' + L('assistantEmpty') + '</p>') +
+      (cur ? '<button type="button" class="linkbtn" data-act="assistant-pick" data-id="">' + L('assistantNone') + '</button>' : '') + '</section>';
   }
   function viewProfile() {
     var iosHint = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
@@ -860,7 +913,9 @@
       '<div class="profile-row"><span class="muted">' + L('gender') + '</span><b>' + esc(genderLabel(S.me.gender)) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('email') + '</span><b>' + esc(S.me.email) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('roleLabel') + '</span><span class="badge">' + esc(roleLabel(S.me.role)) + '</span></div></section>' +
-      '<section class="panel"><h2>' + L('language') + '</h2><p>' + L('languageHint') + '</p>' + langSelect() + '</section>' +
+      (S.me.role === 'talent' ? viewAssistantPick() : '') +
+      '<section class="panel"><h2>' + L('language') + '</h2><p>' + L('languageHint') + '</p>' + langSelect() +
+      '<h3 class="subh">' + L('addressTitle') + '</h3><p>' + L('addressHint') + '</p>' + addressSelect() + '</section>' +
       '<section class="panel"><h2>' + L('themeTitle') + '</h2><p>' + L('themeHint') + '</p>' + themeSelect() + '</section>' +
       '<section class="panel"><h2>' + L('nameChange') + '</h2><form data-form="name">' +
       fld(L('firstName'), '<input class="input" name="first" data-keep="pf-first" value="' + esc(S.me.first) + '" required maxlength="60">') +
@@ -872,7 +927,7 @@
       '<textarea class="input autogrow" name="traits" rows="4" maxlength="2000" data-keep="pf-traits" placeholder="' + esc(L('traitsPh')) + '" aria-label="' + esc(L('traits')) + '">' + esc(S.me.traits) + '</textarea>' +
       '<button class="btn" type="submit" style="margin-top:10px">' + L('traitsSave') + '</button></form></section>' +
       '<section class="panel"><h2>' + L('phoneChange') + '</h2><p>' + L('phoneChangeNote') + '</p><form data-form="phone">' +
-      fld(L('phoneNew'), '<input class="input" name="phone" type="tel" inputmode="tel" autocomplete="off" data-keep="pf-phone" placeholder="079 123 45 67" required>') +
+      fld(L('phoneNew'), phoneField('pf-phone', true)) +
       '<button class="btn" type="submit">' + L('phoneSave') + '</button></form></section>' +
       '<section class="panel"><h2>' + L('pinChange') + '</h2><p>' + L('pinIntro') + '</p><form data-form="pin">' +
       fld(L('pinNew'), '<input class="input pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="new-password" data-keep="pf-pin" required>') +
@@ -1100,6 +1155,12 @@
       S = freshState(); S.step = 'login'; render(); window.scrollTo(0, 0);
       return;
     }
+    if (a === 'assistant-pick' && S.me.role === 'talent') {
+      var asid = D.id || null;
+      await act(function () { return sb.rpc('set_assistant', { new_assistant: asid }); }, L('assistantSaved'));
+      render();
+      return;
+    }
     if (a === 'avatar-remove') {
       await act(function () { return sb.rpc('set_avatar', { target: S.me.id, new_avatar: null }); }, L('photoRemoved'));
       render();
@@ -1244,7 +1305,7 @@
     if (!form) return;
     e.preventDefault();
     var kind = form.dataset.form, f = new FormData(form);
-    var g = function (k) { return String(f.get(k) || '').trim(); };
+    var g = function (k) { if (k === 'phone' && f.has('cc')) return combinedPhone(f); return String(f.get(k) || '').trim(); };
     if (kind === 'auth') { if (!S.busy) handleAuth(g); return; }
     if (!S.me || S.busy && kind !== 'chat') return;
 
@@ -1367,6 +1428,18 @@
       render();
       return;
     }
+    if (el.dataset.cc !== undefined) {
+      S.drafts[el.dataset.keep] = el.value;
+      try { localStorage.setItem('coaching-cc', el.value); } catch (e) { /* ignorieren */ }
+      return;
+    }
+    if (el.dataset.addr !== undefined && S.me) {
+      var af2 = el.value === 'formal' ? 'formal' : 'informal';
+      var okA = await act(function () { return sb.from('profiles').update({ address_form: af2 }).eq('id', S.me.id); });
+      if (okA) { setFormal(af2 === 'formal'); toast(L('addressSaved')); }
+      render();
+      return;
+    }
     if (el.dataset.adminRf !== undefined) { S.roleFilter = el.value; render(); return; }
     if ('lang' in el.dataset) {
       setLang(el.value);
@@ -1394,6 +1467,8 @@
     if (t.dataset && t.dataset.keep) { S.drafts[t.dataset.keep] = t.value; growField(t); }
     if (t.dataset && t.dataset.adminQ) { S.q = t.value; render(); return; }
     if (t.name === 'phone' && t.closest('[data-form="auth"],[data-form="phone"],[data-form="person-add"]')) {
+      var ccSel = t.form && t.form.elements && t.form.elements.cc;
+      if (ccSel && ccSel.value !== 'CH') return;
       var pos = t.selectionStart, atEnd = pos === t.value.length;
       var before = t.value.slice(0, pos).replace(/\D/g, '').length;
       var fmt = formatPhoneTyping(t.value);

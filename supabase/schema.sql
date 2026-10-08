@@ -31,6 +31,8 @@ create table if not exists public.profiles (
   gender      text not null check (gender in ('m', 'w', 'x')),   -- männlich / weiblich / divers
   avatar      text check (avatar is null or (avatar like 'data:image/jpeg;base64,%' and length(avatar) <= 120000)),  -- Profilbild (klein, im Browser verkleinert)
   traits      text check (traits is null or length(traits) <= 2000),   -- Eigenschaften (Freitext)
+  address_form text not null default 'informal' check (address_form in ('informal', 'formal')),   -- Du- oder Sie-Anrede
+  assistant_id uuid references public.profiles(id) on delete set null,   -- gewählter Assistent (nur Talente)
   phone       text not null unique,                 -- Login-Name (zusammen mit dem PIN)
   email       text not null check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),  -- Kontakt-Adresse, nicht für den Login
   role        text not null default 'talent' check (role in ('admin', 'mentor', 'assistent', 'talent')),
@@ -94,6 +96,17 @@ end $$;
 -- Rolle «assistent» ergänzen (ältere Versionen kennen nur admin, mentor, talent)
 alter table public.profiles drop constraint if exists profiles_role_check;
 alter table public.profiles add constraint profiles_role_check check (role in ('admin', 'mentor', 'assistent', 'talent'));
+
+do $$
+begin
+  if not exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'profiles' and column_name = 'address_form') then
+    alter table public.profiles add column address_form text not null default 'informal';
+    alter table public.profiles add constraint profiles_address_form_chk check (address_form in ('informal', 'formal'));
+  end if;
+  if not exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'profiles' and column_name = 'assistant_id') then
+    alter table public.profiles add column assistant_id uuid references public.profiles(id) on delete set null;
+  end if;
+end $$;
 
 -- ---------- Chat (Gespräch zwischen Bot und Talent) ----------
 -- sender: 'bot' oder 'user'.
@@ -303,6 +316,37 @@ $$;
 revoke execute on function public.admin_update_person(uuid, text, text, text, text, text) from public, anon;
 grant  execute on function public.admin_update_person(uuid, text, text, text, text, text) to authenticated;
 
+-- Assistenten auflisten (für die Auswahl im Profil). Talente sehen sonst keine fremden Profile.
+create or replace function public.list_assistants()
+returns table (id uuid, first_name text, last_name text, avatar text, traits text)
+language sql stable security definer set search_path = public
+as $$
+  select p.id, p.first_name, p.last_name, p.avatar, p.traits
+    from public.profiles p
+   where p.role = 'assistent' and auth.uid() is not null
+   order by p.first_name, p.last_name
+$$;
+revoke execute on function public.list_assistants() from public, anon;
+grant  execute on function public.list_assistants() to authenticated;
+
+-- Assistent wählen (nur Talente, nur für sich selbst; null = Auswahl aufheben)
+create or replace function public.set_assistant(new_assistant uuid)
+returns void
+language plpgsql security definer set search_path = public
+as $$
+begin
+  if auth.uid() is null or not exists (select 1 from public.profiles where id = auth.uid() and role = 'talent') then
+    raise exception 'Nur Talente können einen Assistenten wählen';
+  end if;
+  if new_assistant is not null and not exists (select 1 from public.profiles where id = new_assistant and role = 'assistent') then
+    raise exception 'Ungültiger Assistent';
+  end if;
+  update public.profiles set assistant_id = new_assistant where id = auth.uid();
+end;
+$$;
+revoke execute on function public.set_assistant(uuid) from public, anon;
+grant  execute on function public.set_assistant(uuid) to authenticated;
+
 revoke execute on function public.set_avatar(uuid, text) from public, anon;
 grant  execute on function public.set_avatar(uuid, text) to authenticated;
 
@@ -388,12 +432,12 @@ create policy "profiles_select" on public.profiles
   for select to authenticated using (id = auth.uid() or public.is_admin());
 
 -- Ändern darf jede Person nur Vorname, Nachname, Geschlecht, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
--- Rolle, Handynummer, Profilbild und Eigenschaften laufen ausschliesslich über die Funktionen set_role / update_own_phone / set_avatar / set_traits.
+-- Rolle, Handynummer, Profilbild, Eigenschaften und Assistent laufen ausschliesslich über die Funktionen set_role / update_own_phone / set_avatar / set_traits / set_assistant.
 drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own" on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());
 revoke update on public.profiles from authenticated, anon;
-grant  update (first_name, last_name, gender, email, language, pin_changed, theme) on public.profiles to authenticated;
+grant  update (first_name, last_name, gender, email, address_form, language, pin_changed, theme) on public.profiles to authenticated;
 
 -- Chat, Notizen, Prep: streng privat. Jede Person sieht und ändert nur die eigenen Einträge.
 do $$

@@ -23,11 +23,13 @@ Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (C
 ## Regeln
 - `service_role`-Schlüssel nie in `config.js`; dort nur der `anon public`-Key.
 - Neue Tabellen: RLS aktivieren, Policy, Realtime-Publication (Listen am Ende von `schema.sql` ergänzen).
-- Neue Texte: in **allen 4 Sprachen** (de, en, fr, it) im `DICT` in `app.js`; Platzhalter müssen übereinstimmen.
+- Neue Texte: in **allen 4 Sprachen** (de, en, fr, it) im `DICT` in `app.js`; Platzhalter müssen übereinstimmen. Texte, die die Person direkt ansprechen, brauchen zusätzlich eine Sie-Variante mit Schlüssel + `F` (z. B. `botQ1F`) in de, fr, it; `L()` wählt sie, wenn `profiles.address_form = 'formal'`.
+- Telefonfelder immer mit `phoneField()` (Land + Rest); der Submit-Handler setzt sie über `combinedPhone()` zusammen.
 - Jede Ausgabe von Nutzerdaten über `esc()`; Admin-Aktionen mit Client-Guard (`S.me.role === 'admin'`) **und** serverseitiger Prüfung (`is_admin()`).
 - `sw.js`: `CACHE` (`coaching-vN`) um 1 erhöhen, sobald eine Shell-Datei ändert; alle Pfade in `SHELL` müssen existieren.
 - Rolle und Handynummer ändern nur über RPC (`set_role`, `update_own_phone`); die Spalten sind für Clients nicht direkt schreibbar.
 - Admins ändern Stammdaten anderer Personen nur über `admin_update_person` (Handynummer bleibt bei der Person selbst).
+- Den Assistenten eines Talents wählt nur `set_assistant` (nur Talente, nur für sich selbst); die Liste der Assistenten liefert `list_assistants`, weil Talente sonst keine fremden Profile sehen.
 - Das Profilbild ändert ebenfalls nur die RPC `set_avatar`, die Eigenschaften (Freitext `traits`) nur `set_traits` – jeweils die Person selbst oder ein Admin für alle.
 - Chat, Notizen und Prep-Punkte sind privat (`user_id = auth.uid()`); Queries filtern zusätzlich mit `.eq('user_id', …)`.
 
