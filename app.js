@@ -945,7 +945,10 @@
       '<div class="convofields">' + fld(L('language'), langSelect()) + fld(L('addressTitle'), addressSelect()) + '</div></div></section>';
   }
   function pinPanel() {
-    return '<section class="panel"><div class="ptable">' + profileRow('pin', 'PIN', S.me.pinChanged ? '••••••' : '<span class="muted">' + L('pinStandard') + '</span>') + '</div></section>';
+    return '<section class="panel"><h2>' + L('pinChange') + '</h2><p>' + L('pinIntro') + '</p><form data-form="pin">' +
+      fld(L('pinNew'), '<input class="input pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="new-password" data-keep="pf-pin" required>') +
+      '<button class="btn" type="submit">' + L('pinSave') + '</button></form>' +
+      '<button type="button" class="linkbtn" data-act="pin-default" style="margin-top:10px">' + L('pinDefault') + '</button></section>';
   }
   function viewProfile() {
     var iosHint = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
@@ -964,21 +967,9 @@
       '<button type="button" class="btn dangerbtn" data-act="logout">' + ICON.logout + L('logout') + '</button>' +
       (S.pfEdit ? profileSheetHtml() : '');
   }
-  // Persönliche Angaben als Tabelle: Beschriftung, Wert und ein Bearbeiten-Knopf pro Zeile
-  function profileRow(field, label, valueHtml) {
-    return '<div class="prow"><span class="plabel">' + label + '</span><span class="pval">' + valueHtml + '</span>' +
-      (field ? '<button type="button" class="iconbtn" data-act="pf-edit" data-field="' + field + '" aria-label="' + esc(L('edit') + ': ' + label) + '">' + ICON.edit + '</button>' : '<span></span>') + '</div>';
-  }
-  // Bearbeiten-Blatt für genau eine Angabe
   function profileSheetHtml() {
     var f = S.pfEdit, m = S.me, title = '', body = '';
-    if (f === 'pin') {
-      title = L('pinChange');
-      body = '<p>' + L('pinIntro') + '</p><form data-form="pin">' +
-        fld(L('pinNew'), '<input class="input pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="new-password" data-keep="pf-pin" required>') +
-        '<button class="btn" type="submit">' + L('pinSave') + '</button></form>' +
-        '<button type="button" class="linkbtn" data-act="pin-default" style="margin-top:10px">' + L('pinDefault') + '</button>';
-    } else if (f === 'assistant' && m.role === 'talent') {
+    if (f === 'assistant' && m.role === 'talent') {
       title = L('assistantTitle');
       body = assistantBody();
     } else if (f === 'photo') {
