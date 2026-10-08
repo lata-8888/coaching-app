@@ -11,7 +11,7 @@
 **Regel:** Änderungen zuerst in DEV. Die Coaching-App hat ein eigenes Supabase-Projekt und teilt nichts mit der FBRO-App (`lata-8888/fbro-dev`, dient nur als Konzeptvorlage).
 
 ## Übersicht
-Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (Chat, Notes, Prep, Profil), vier Rollen (admin, mentor, assistent, talent). Details: `README.md`.
+Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (Chat, Notes, Prep, Profil) plus der Admin-Tab (nur für Admins, Personenverwaltung), vier Rollen (admin, mentor, assistent, talent). Details: `README.md`.
 
 ## Aus FBRO übernommene Konzepte
 - Login: Handynummer → synthetische Adresse `<Nummer ohne +>@<EMAIL_DOMAIN>`, PIN = letzte 6 Ziffern, bis ein eigener PIN gesetzt ist (`pin_changed`, gelber Hinweisbalken). `EMAIL_DOMAIN` muss in `config.js` aktiv gesetzt sein und zu `auth.users` passen.
@@ -27,6 +27,7 @@ Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (C
 - Jede Ausgabe von Nutzerdaten über `esc()`; Admin-Aktionen mit Client-Guard (`S.me.role === 'admin'`) **und** serverseitiger Prüfung (`is_admin()`).
 - `sw.js`: `CACHE` (`coaching-vN`) um 1 erhöhen, sobald eine Shell-Datei ändert; alle Pfade in `SHELL` müssen existieren.
 - Rolle und Handynummer ändern nur über RPC (`set_role`, `update_own_phone`); die Spalten sind für Clients nicht direkt schreibbar.
+- Admins ändern Stammdaten anderer Personen nur über `admin_update_person` (Handynummer bleibt bei der Person selbst).
 - Das Profilbild ändert ebenfalls nur die RPC `set_avatar`, die Eigenschaften (Freitext `traits`) nur `set_traits` – jeweils die Person selbst oder ein Admin für alle.
 - Chat, Notizen und Prep-Punkte sind privat (`user_id = auth.uid()`); Queries filtern zusätzlich mit `.eq('user_id', …)`.
 

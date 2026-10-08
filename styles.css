@@ -288,3 +288,7 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .personrow { flex-wrap: wrap; }
 
 .traits-line { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.adminfilter { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin: 10px 0; }
+.adminfilter select { width: auto; }
+.people .personhead + .traits-line { margin-top: 6px; }
+.tabbar .tab span { overflow: hidden; text-overflow: ellipsis; max-width: 100%; }

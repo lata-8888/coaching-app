@@ -281,6 +281,28 @@ $$;
 revoke execute on function public.set_traits(uuid, text) from public, anon;
 grant  execute on function public.set_traits(uuid, text) to authenticated;
 
+-- Stammdaten einer Person ändern (nur Admins): Vorname, Nachname, Geschlecht, E-Mail, Eigenschaften.
+-- Handynummer und Rolle bleiben bei update_own_phone bzw. set_role.
+create or replace function public.admin_update_person(target uuid, p_first text, p_last text, p_gender text, p_email text, p_traits text)
+returns void
+language plpgsql security definer set search_path = public
+as $$
+begin
+  if not public.is_admin() then
+    raise exception 'Nur Admins';
+  end if;
+  update public.profiles
+     set first_name = trim(p_first), last_name = trim(p_last), gender = p_gender,
+         email = trim(p_email), traits = nullif(trim(p_traits), '')
+   where id = target;   -- Formate prüfen die Tabellen-Constraints
+  if not found then
+    raise exception 'Person nicht gefunden';
+  end if;
+end;
+$$;
+revoke execute on function public.admin_update_person(uuid, text, text, text, text, text) from public, anon;
+grant  execute on function public.admin_update_person(uuid, text, text, text, text, text) to authenticated;
+
 revoke execute on function public.set_avatar(uuid, text) from public, anon;
 grant  execute on function public.set_avatar(uuid, text) to authenticated;
 

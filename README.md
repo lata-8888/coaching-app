@@ -17,17 +17,18 @@ Eine PRD-Umgebung gibt es noch nicht.
 | **Chat** | Gespräch zwischen Coach-Bot und Talent im Messenger-Stil. Der Bot führt durch Thema → drei Fragen → Angebot, hält auf Wunsch eine Notiz fest oder legt den nächsten Schritt in Prep. Jede Nachricht lässt sich antippen und per «Als Notiz» / «In Prep» übernehmen. |
 | **Notes** | Gedanken und Notizen mit Zeitstempel. Der Titel entsteht automatisch aus dem Inhalt und lässt sich von Hand überschreiben (leer lassen = wieder automatisch). |
 | **Prep** | Checkliste / Agenda für ein Meeting. Punkte von Hand erfassen oder aus Chat und Notes übernehmen; die Herkunft bleibt als Chip sichtbar und springt zur Quelle. Erledigen, sortieren, bearbeiten, Erledigte entfernen. |
-| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, Geschlecht, E-Mail, Profilbild, Handynummer, PIN. Admins verwalten hier zusätzlich Personen und Rollen. |
+| **Admin** (nur Admins) | Teilnehmer verwalten: suchen, nach Rolle filtern, Stammdaten bearbeiten (Vorname, Nachname, Geschlecht, E-Mail, Eigenschaften), Rolle ändern, Profilbild setzen, PIN zurücksetzen, Person anlegen oder entfernen. |
+| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, Geschlecht, E-Mail, Profilbild, Handynummer, PIN.  |
 
 ## Personendaten
 
-Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Dazu kommt ein Freitextfeld «Eigenschaften» (`profiles.traits`, höchstens 2000 Zeichen), das die Person selbst und Admins bearbeiten können (RPC `set_traits`). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig. Jede Person ändert ihr Bild im Profil selbst; Admins können es zusätzlich für alle Personen setzen oder entfernen (Profil → Personen). Beides läuft über die Funktion `set_avatar`.
+Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Dazu kommt ein Freitextfeld «Eigenschaften» (`profiles.traits`, höchstens 2000 Zeichen), das die Person selbst und Admins bearbeiten können (RPC `set_traits`). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig. Jede Person ändert ihr Bild im Profil selbst; Admins können es zusätzlich für alle Personen setzen oder entfernen (Tab Admin). Beides läuft über die Funktion `set_avatar`.
 
 ## Rollen
 
 `admin`, `mentor`, `assistent`, `talent` (Spalte `profiles.role`). Neue Konten sind immer `talent`; die Rolle ändert nur ein Admin (RPC `set_role`).
 
-- **admin**: Personen anlegen, Rollen vergeben, Profilbilder setzen, PIN zurücksetzen, Personen entfernen (Profil → Personen).
+- **admin**: Personen anlegen, Rollen vergeben, Profilbilder setzen, PIN zurücksetzen, Personen entfernen (Tab Admin).
 - **mentor**, **assistent** und **talent**: sehen dieselben vier Seiten. Chat, Notes und Prep sind streng privat (RLS: nur eigene Zeilen). Mentoren und Assistenten haben vorerst keine zusätzlichen Rechte.
 
 ## Einrichtung (DEV)
