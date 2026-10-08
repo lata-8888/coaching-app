@@ -15,7 +15,7 @@
   var pad = function (n) { return String(n).padStart(2, '0'); };
   var $ = function (id) { return document.getElementById(id); };
   var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
-  var ROLES = ['admin', 'mentor', 'talent'];
+  var ROLES = ['admin', 'mentor', 'assistent', 'talent'];
   var TOPICS = ['goal', 'decision', 'blocked', 'meeting'];
 
   /* ---------- Sprachen (Übersetzungen) ---------- */
@@ -65,7 +65,7 @@
       pickTitle: 'Aus Chat / Notes übernehmen', pickNotes: 'Notizen', pickChat: 'Chat', pickEmpty: 'Hier gibt es noch nichts.', pickAdd: 'Übernehmen', pickAdded: 'Schon drin',
       srcNote: 'Notiz', srcChat: 'Chat', srcGone: 'Quelle gelöscht', moveUp: 'Nach oben', moveDown: 'Nach unten', confirmClearDone: 'Alle erledigten Punkte entfernen?',
       coachLabel: 'Coach', youLabel: 'Du',
-      profileTitle: 'Mein Profil', roleLabel: 'Rolle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Name',
+      profileTitle: 'Mein Profil', roleLabel: 'Rolle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleAssistant: 'Assistent', roleTalent: 'Talent', nameLabel: 'Name',
       nameChange: 'Persönliche Angaben', nameSave: 'Angaben speichern', nameSaved: 'Angaben gespeichert',
       phoneChange: 'Handynummer ändern', phoneNew: 'Neue Handynummer', phoneSave: 'Nummer speichern', phoneSaved: 'Handynummer gespeichert',
       phoneTaken: 'Diese Handynummer gehört schon jemand anderem.', phoneChangeNote: 'Du meldest dich danach mit der neuen Nummer an. Dein PIN bleibt gleich.',
@@ -125,7 +125,7 @@
       pickTitle: 'Take from Chat / Notes', pickNotes: 'Notes', pickChat: 'Chat', pickEmpty: 'Nothing here yet.', pickAdd: 'Add', pickAdded: 'Already in',
       srcNote: 'Note', srcChat: 'Chat', srcGone: 'Source deleted', moveUp: 'Move up', moveDown: 'Move down', confirmClearDone: 'Remove all completed items?',
       coachLabel: 'Coach', youLabel: 'You',
-      profileTitle: 'My profile', roleLabel: 'Role', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Name',
+      profileTitle: 'My profile', roleLabel: 'Role', roleAdmin: 'Admin', roleMentor: 'Mentor', roleAssistant: 'Assistant', roleTalent: 'Talent', nameLabel: 'Name',
       nameChange: 'Personal details', nameSave: 'Save details', nameSaved: 'Details saved',
       phoneChange: 'Change mobile number', phoneNew: 'New mobile number', phoneSave: 'Save number', phoneSaved: 'Mobile number saved',
       phoneTaken: 'This mobile number already belongs to someone else.', phoneChangeNote: 'You will then sign in with the new number. Your PIN stays the same.',
@@ -185,7 +185,7 @@
       pickTitle: 'Reprendre depuis Chat / Notes', pickNotes: 'Notes', pickChat: 'Chat', pickEmpty: 'Rien ici pour l’instant.', pickAdd: 'Ajouter', pickAdded: 'Déjà ajouté',
       srcNote: 'Note', srcChat: 'Chat', srcGone: 'Source supprimée', moveUp: 'Monter', moveDown: 'Descendre', confirmClearDone: 'Retirer tous les points terminés ?',
       coachLabel: 'Coach', youLabel: 'Toi',
-      profileTitle: 'Mon profil', roleLabel: 'Rôle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Nom complet',
+      profileTitle: 'Mon profil', roleLabel: 'Rôle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleAssistant: 'Assistant(e)', roleTalent: 'Talent', nameLabel: 'Nom complet',
       nameChange: 'Données personnelles', nameSave: 'Enregistrer les données', nameSaved: 'Données enregistrées',
       phoneChange: 'Changer le numéro de mobile', phoneNew: 'Nouveau numéro de mobile', phoneSave: 'Enregistrer le numéro', phoneSaved: 'Numéro enregistré',
       phoneTaken: 'Ce numéro appartient déjà à quelqu’un d’autre.', phoneChangeNote: 'Tu te connecteras ensuite avec le nouveau numéro. Ton PIN reste le même.',
@@ -245,7 +245,7 @@
       pickTitle: 'Prendi da Chat / Note', pickNotes: 'Note', pickChat: 'Chat', pickEmpty: 'Per ora non c’è nulla.', pickAdd: 'Aggiungi', pickAdded: 'Già presente',
       srcNote: 'Nota', srcChat: 'Chat', srcGone: 'Fonte eliminata', moveUp: 'Su', moveDown: 'Giù', confirmClearDone: 'Rimuovere tutti i punti completati?',
       coachLabel: 'Coach', youLabel: 'Tu',
-      profileTitle: 'Il mio profilo', roleLabel: 'Ruolo', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Nome e cognome',
+      profileTitle: 'Il mio profilo', roleLabel: 'Ruolo', roleAdmin: 'Admin', roleMentor: 'Mentor', roleAssistant: 'Assistente', roleTalent: 'Talent', nameLabel: 'Nome e cognome',
       nameChange: 'Dati personali', nameSave: 'Salva i dati', nameSaved: 'Dati salvati',
       phoneChange: 'Cambia numero di cellulare', phoneNew: 'Nuovo numero di cellulare', phoneSave: 'Salva numero', phoneSaved: 'Numero salvato',
       phoneTaken: 'Questo numero appartiene già a un’altra persona.', phoneChangeNote: 'Poi accederai con il nuovo numero. Il tuo PIN resta uguale.',
@@ -625,7 +625,7 @@
       return '<button type="button" class="segbtn' + (theme === o.v ? ' on' : '') + '" data-act="set-theme" data-val="' + o.v + '" aria-pressed="' + (theme === o.v) + '">' + o.icon + '<span>' + o.label + '</span></button>';
     }).join('') + '</div>';
   }
-  function roleLabel(r) { return L(r === 'admin' ? 'roleAdmin' : r === 'mentor' ? 'roleMentor' : 'roleTalent'); }
+  function roleLabel(r) { return L(r === 'admin' ? 'roleAdmin' : r === 'mentor' ? 'roleMentor' : r === 'assistent' ? 'roleAssistant' : 'roleTalent'); }
 
   /* ---------- Ansicht: Einrichtung & Anmeldung ---------- */
   function viewSetup() {

@@ -11,7 +11,7 @@
 **Regel:** Änderungen zuerst in DEV. Die Coaching-App hat ein eigenes Supabase-Projekt und teilt nichts mit der FBRO-App (`lata-8888/fbro-dev`, dient nur als Konzeptvorlage).
 
 ## Übersicht
-Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (Chat, Notes, Prep, Profil), drei Rollen (admin, mentor, talent). Details: `README.md`.
+Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (Chat, Notes, Prep, Profil), vier Rollen (admin, mentor, assistent, talent). Details: `README.md`.
 
 ## Aus FBRO übernommene Konzepte
 - Login: Handynummer → synthetische Adresse `<Nummer ohne +>@<EMAIL_DOMAIN>`, PIN = letzte 6 Ziffern, bis ein eigener PIN gesetzt ist (`pin_changed`, gelber Hinweisbalken). `EMAIL_DOMAIN` muss in `config.js` aktiv gesetzt sein und zu `auth.users` passen.

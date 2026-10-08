@@ -22,7 +22,7 @@ insert into public.app_settings (key, value) values ('club_code', 'CHANGE-ME')
   on conflict (key) do nothing;
 
 -- ---------- Profile ----------
--- Rollen: admin (verwaltet Personen), mentor, talent (Standard für neue Konten)
+-- Rollen: admin (verwaltet Personen), mentor, assistent, talent (Standard für neue Konten)
 create table if not exists public.profiles (
   id          uuid primary key references auth.users(id) on delete cascade,
   first_name  text not null check (length(trim(first_name)) > 0),
@@ -33,7 +33,7 @@ create table if not exists public.profiles (
   traits      text check (traits is null or length(traits) <= 2000),   -- Eigenschaften (Freitext)
   phone       text not null unique,                 -- Login-Name (zusammen mit dem PIN)
   email       text not null check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),  -- Kontakt-Adresse, nicht für den Login
-  role        text not null default 'talent' check (role in ('admin', 'mentor', 'talent')),
+  role        text not null default 'talent' check (role in ('admin', 'mentor', 'assistent', 'talent')),
   language    text check (language is null or language in ('de', 'en', 'fr', 'it')),
   theme       text check (theme is null or theme in ('light', 'dark')),   -- null = automatisch
   pin_changed boolean not null default false,
@@ -90,6 +90,10 @@ begin
     alter table public.profiles add constraint profiles_traits_chk check (traits is null or length(traits) <= 2000);
   end if;
 end $$;
+
+-- Rolle «assistent» ergänzen (ältere Versionen kennen nur admin, mentor, talent)
+alter table public.profiles drop constraint if exists profiles_role_check;
+alter table public.profiles add constraint profiles_role_check check (role in ('admin', 'mentor', 'assistent', 'talent'));
 
 -- ---------- Chat (Gespräch zwischen Bot und Talent) ----------
 -- sender: 'bot' oder 'user'.
@@ -153,7 +157,7 @@ begin
   if not public.is_admin() then
     raise exception 'Nur Admins dürfen Rollen vergeben';
   end if;
-  if new_role not in ('admin', 'mentor', 'talent') then
+  if new_role not in ('admin', 'mentor', 'assistent', 'talent') then
     raise exception 'Ungültige Rolle';
   end if;
   if target = auth.uid() and new_role <> 'admin' then

@@ -25,10 +25,10 @@ Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x
 
 ## Rollen
 
-`admin`, `mentor`, `talent` (Spalte `profiles.role`). Neue Konten sind immer `talent`; die Rolle ändert nur ein Admin (RPC `set_role`).
+`admin`, `mentor`, `assistent`, `talent` (Spalte `profiles.role`). Neue Konten sind immer `talent`; die Rolle ändert nur ein Admin (RPC `set_role`).
 
 - **admin**: Personen anlegen, Rollen vergeben, Profilbilder setzen, PIN zurücksetzen, Personen entfernen (Profil → Personen).
-- **mentor** und **talent**: sehen dieselben vier Seiten. Chat, Notes und Prep sind streng privat (RLS: nur eigene Zeilen). Mentoren haben vorerst keine zusätzlichen Rechte.
+- **mentor**, **assistent** und **talent**: sehen dieselben vier Seiten. Chat, Notes und Prep sind streng privat (RLS: nur eigene Zeilen). Mentoren und Assistenten haben vorerst keine zusätzlichen Rechte.
 
 ## Einrichtung (DEV)
 
