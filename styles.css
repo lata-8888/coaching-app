@@ -316,3 +316,13 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .pshead { display: flex; align-items: center; gap: 14px; }
 .psmeta { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 0; overflow-wrap: anywhere; }
 .dangerzone { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--line); }
+
+/* Profil: Angaben als Tabelle, Sprache und Anrede nebeneinander */
+.ptable h2 { margin-bottom: 4px; }
+.prow { display: grid; grid-template-columns: minmax(84px, 32%) 1fr 40px; align-items: center; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.prow:last-child { border-bottom: 0; }
+.prow .plabel { color: var(--muted); font-size: .9rem; }
+.prow .pval { font-weight: 600; overflow-wrap: anywhere; min-width: 0; }
+.prow .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 500; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+.duo .field { margin-bottom: 0; }
