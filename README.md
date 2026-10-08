@@ -21,13 +21,13 @@ Eine PRD-Umgebung gibt es noch nicht.
 
 ## Personendaten
 
-Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig.
+Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig. Jede Person ändert ihr Bild im Profil selbst; Admins können es zusätzlich für alle Personen setzen oder entfernen (Profil → Personen). Beides läuft über die Funktion `set_avatar`.
 
 ## Rollen
 
 `admin`, `mentor`, `talent` (Spalte `profiles.role`). Neue Konten sind immer `talent`; die Rolle ändert nur ein Admin (RPC `set_role`).
 
-- **admin**: Personen anlegen, Rollen vergeben, PIN zurücksetzen, Personen entfernen (Profil → Personen).
+- **admin**: Personen anlegen, Rollen vergeben, Profilbilder setzen, PIN zurücksetzen, Personen entfernen (Profil → Personen).
 - **mentor** und **talent**: sehen dieselben vier Seiten. Chat, Notes und Prep sind streng privat (RLS: nur eigene Zeilen). Mentoren haben vorerst keine zusätzlichen Rechte.
 
 ## Einrichtung (DEV)

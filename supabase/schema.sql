@@ -241,6 +241,21 @@ begin
 end;
 $$;
 
+-- Profilbild setzen oder entfernen (null): die Person selbst oder ein Admin für beliebige Personen.
+create or replace function public.set_avatar(target uuid, new_avatar text)
+returns void
+language plpgsql security definer set search_path = public
+as $$
+begin
+  if auth.uid() is null or (target <> auth.uid() and not public.is_admin()) then
+    raise exception 'Keine Berechtigung';
+  end if;
+  update public.profiles set avatar = new_avatar where id = target;   -- Format/Grösse prüft die Tabelle
+end;
+$$;
+revoke execute on function public.set_avatar(uuid, text) from public, anon;
+grant  execute on function public.set_avatar(uuid, text) to authenticated;
+
 revoke execute on function public.set_role(uuid, text)         from public, anon;
 revoke execute on function public.reset_pin(uuid)              from public, anon;
 revoke execute on function public.get_club_code()              from public, anon;
@@ -322,13 +337,13 @@ drop policy if exists "profiles_select" on public.profiles;
 create policy "profiles_select" on public.profiles
   for select to authenticated using (id = auth.uid() or public.is_admin());
 
--- Ändern darf jede Person nur Vorname, Nachname, Geschlecht, Profilbild, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
--- Rolle und Handynummer laufen ausschliesslich über die Funktionen set_role / update_own_phone.
+-- Ändern darf jede Person nur Vorname, Nachname, Geschlecht, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
+-- Rolle, Handynummer und Profilbild laufen ausschliesslich über die Funktionen set_role / update_own_phone / set_avatar.
 drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own" on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());
 revoke update on public.profiles from authenticated, anon;
-grant  update (first_name, last_name, gender, avatar, email, language, pin_changed, theme) on public.profiles to authenticated;
+grant  update (first_name, last_name, gender, email, language, pin_changed, theme) on public.profiles to authenticated;
 
 -- Chat, Notizen, Prep: streng privat. Jede Person sieht und ändert nur die eigenen Einträge.
 do $$

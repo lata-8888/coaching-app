@@ -803,6 +803,9 @@
         '<span class="badge">' + esc(roleLabel(p.role)) + '</span></div>' +
         '<div class="personrow"><select class="input" data-role-for="' + esc(p.id) + '" aria-label="' + esc(L('roleSelect')) + '"' + (self ? ' disabled' : '') + '>' +
         ROLES.map(function (r) { return '<option value="' + r + '"' + (p.role === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>' +
+        '<label class="mini" for="avatar-for-' + esc(p.id) + '">' + L(p.avatar ? 'photoChange' : 'photoPick') + '</label>' +
+        '<input id="avatar-for-' + esc(p.id) + '" class="visually-hidden" type="file" accept="image/*" data-avatar-for="' + esc(p.id) + '" aria-label="' + esc(L('photoTitle')) + '">' +
+        (p.avatar ? '<button type="button" class="mini" data-act="person-avatar-remove" data-id="' + esc(p.id) + '">' + L('photoRemove') + '</button>' : '') +
         '<button type="button" class="mini" data-act="person-reset" data-id="' + esc(p.id) + '">' + L('resetPin') + '</button>' +
         (self ? '' : '<button type="button" class="mini del" data-act="person-del" data-id="' + esc(p.id) + '">' + L('removeP') + '</button>') + '</div></li>';
     }).join('');
@@ -1075,7 +1078,7 @@
       return;
     }
     if (a === 'avatar-remove') {
-      await act(function () { return sb.from('profiles').update({ avatar: null }).eq('id', S.me.id); }, L('photoRemoved'));
+      await act(function () { return sb.rpc('set_avatar', { target: S.me.id, new_avatar: null }); }, L('photoRemoved'));
       render();
       return;
     }
@@ -1157,6 +1160,12 @@
     /* Personenverwaltung (nur Admin; die Datenbank prüft zusätzlich) */
     if (!S.me || S.me.role !== 'admin') return;
     if (a === 'person-add-toggle') { S.addPerson = !S.addPerson; render(); return; }
+    if (a === 'person-avatar-remove' && S.me.role === 'admin') {
+      var avId = D.id;
+      await act(function () { return sb.rpc('set_avatar', { target: avId, new_avatar: null }); }, L('photoRemoved'));
+      render();
+      return;
+    }
     if (a === 'person-reset') {
       var who = S.people.filter(function (p) { return p.id === D.id; })[0]; if (!who) return;
       if (!(await askConfirm(L('resetPin'), L('confirmResetPin', { name: who.name }), false))) return;
@@ -1297,8 +1306,19 @@
       if (!file) return;
       try {
         var data = await resizeImage(file);
-        await act(function () { return sb.from('profiles').update({ avatar: data }).eq('id', S.me.id); }, L('photoSaved'));
+        await act(function () { return sb.rpc('set_avatar', { target: S.me.id, new_avatar: data }); }, L('photoSaved'));
       } catch (err4) { console.error(err4); toast(L('photoFail')); }
+      return;
+    }
+    if (el.dataset.avatarFor && S.me && S.me.role === 'admin') {
+      var af = el.files && el.files[0], aid = el.dataset.avatarFor;
+      el.value = '';
+      if (!af) return;
+      try {
+        var adata = await resizeImage(af);
+        await act(function () { return sb.rpc('set_avatar', { target: aid, new_avatar: adata }); }, L('photoSaved'));
+      } catch (err5) { console.error(err5); toast(L('photoFail')); }
+      render();
       return;
     }
     if ('lang' in el.dataset) {

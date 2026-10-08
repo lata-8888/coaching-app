@@ -284,3 +284,5 @@ textarea.input { resize: vertical; min-height: 96px; line-height: 1.4; }
 .btn.small { width: auto; padding: 8px 16px; font-size: .95rem; cursor: pointer; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .personhead { gap: 12px; }
+label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
+.personrow { flex-wrap: wrap; }
