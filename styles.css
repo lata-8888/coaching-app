@@ -274,3 +274,13 @@ textarea.input { resize: vertical; min-height: 96px; line-height: 1.4; }
   .toast, .progress i { transition: none; }
   .typing i { animation: none; opacity: .6; }
 }
+
+/* Profilbild */
+.avatar { width: 44px; height: 44px; border-radius: 50%; flex: none; object-fit: cover; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent-soft, var(--line)); color: var(--ink); font-weight: 700; font-size: .95rem; border: 1px solid var(--line); }
+.avatar.big { width: 96px; height: 96px; font-size: 1.8rem; }
+.avatar-panel { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.avatar-actions { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.btn.small { width: auto; padding: 8px 16px; font-size: .95rem; cursor: pointer; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.personhead { gap: 12px; }

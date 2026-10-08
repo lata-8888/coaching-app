@@ -29,7 +29,7 @@ Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (C
 - Rolle und Handynummer ändern nur über RPC (`set_role`, `update_own_phone`); die Spalten sind für Clients nicht direkt schreibbar.
 - Chat, Notizen und Prep-Punkte sind privat (`user_id = auth.uid()`); Queries filtern zusätzlich mit `.eq('user_id', …)`.
 
-- Jede Person hat `first_name`, `last_name`, `phone`, `email` (Pflicht, alle Rollen). Login nur Handynummer + PIN; `email` ist reine Kontaktangabe, nicht `auth.users.email`. `profiles.name` ist generiert (nicht schreibbar).
+- Jede Person hat `first_name`, `last_name`, `gender` (m/w/x), `phone`, `email` (Pflicht, alle Rollen) und optional `avatar` (JPEG-Data-URL, im Browser auf 256 px verkleinert). Login nur Handynummer + PIN; `email` ist reine Kontaktangabe, nicht `auth.users.email`. `profiles.name` ist generiert (nicht schreibbar).
 
 ## Bot und Titel
 - `planBot()` bestimmt aus dem letzten Bot-Eintrag (`kind`: greet, q1, q2, q3, offer, done) die nächste Antwort; `chips` einer Bot-Nachricht sind die angebotenen Schnellantworten. Nutzer-Nachrichten haben `kind = null` (Freitext) oder `'chip'`.

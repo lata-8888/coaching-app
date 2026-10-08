@@ -17,11 +17,11 @@ Eine PRD-Umgebung gibt es noch nicht.
 | **Chat** | Gespräch zwischen Coach-Bot und Talent im Messenger-Stil. Der Bot führt durch Thema → drei Fragen → Angebot, hält auf Wunsch eine Notiz fest oder legt den nächsten Schritt in Prep. Jede Nachricht lässt sich antippen und per «Als Notiz» / «In Prep» übernehmen. |
 | **Notes** | Gedanken und Notizen mit Zeitstempel. Der Titel entsteht automatisch aus dem Inhalt und lässt sich von Hand überschreiben (leer lassen = wieder automatisch). |
 | **Prep** | Checkliste / Agenda für ein Meeting. Punkte von Hand erfassen oder aus Chat und Notes übernehmen; die Herkunft bleibt als Chip sichtbar und springt zur Quelle. Erledigen, sortieren, bearbeiten, Erledigte entfernen. |
-| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, E-Mail, Handynummer, PIN. Admins verwalten hier zusätzlich Personen und Rollen. |
+| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, Geschlecht, E-Mail, Profilbild, Handynummer, PIN. Admins verwalten hier zusätzlich Personen und Rollen. |
 
 ## Personendaten
 
-Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Handynummer und E-Mail. Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname).
+Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Geschlecht (m/w/x), Handynummer, E-Mail und ein Profilbild (optional; Initialen als Ersatz). Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname). Das Profilbild wird im Browser quadratisch auf 256 px verkleinert und als kleines JPEG (Data-URL, höchstens ca. 90 KB) in `profiles.avatar` gespeichert; ein Storage-Bucket ist nicht nötig.
 
 ## Rollen
 
@@ -41,7 +41,7 @@ Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Handynummer und E
    ```js
    const c = supabase.createClient(APP_CONFIG.SUPABASE_URL, APP_CONFIG.SUPABASE_ANON_KEY);
    await c.auth.signUp({ email: '41791234567@phone-login.app', password: '234567',
-     options: { data: { first_name: 'Vorname', last_name: 'Nachname', email: 'name@example.com', phone: '+41791234567', club_code: '<geheimer Code>' } } });
+     options: { data: { first_name: 'Vorname', last_name: 'Nachname', email: 'name@example.com', gender: 'm', phone: '+41791234567', club_code: '<geheimer Code>' } } });
    ```
    Der PIN ist die Nummer ohne `+`, letzte 6 Ziffern. Danach im SQL Editor: `update public.profiles set role = 'admin' where phone = '+41791234567';`
 7. Anmelden, im Profil den eigenen PIN setzen. Weitere Personen legt der Admin im Profil an.

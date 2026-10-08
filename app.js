@@ -79,7 +79,7 @@
       installTitle: 'App installieren', installHint: 'Lege die App auf deinen Startbildschirm, dann öffnet sie sich im Vollbild.',
       installBtn: 'Auf dem Startbildschirm speichern', installIos: 'Tippe in Safari auf «Teilen» und dann auf «Zum Home-Bildschirm».', logout: 'Abmelden',
       peopleTitle: 'Personen', peopleHint: 'Nur für Admins sichtbar. Hier legst du Personen an und vergibst Rollen.', personAdd: 'Person hinzufügen',
-      firstName: 'Vorname', lastName: 'Nachname', email: 'E-Mail', emailInvalid: 'Bitte eine gültige E-Mail-Adresse eingeben.', memberAddNote: 'Die Person meldet sich mit der Handynummer an. Der PIN sind die letzten 6 Ziffern.',
+      firstName: 'Vorname', lastName: 'Nachname', email: 'E-Mail', emailInvalid: 'Bitte eine gültige E-Mail-Adresse eingeben.', gender: 'Geschlecht', genderM: 'männlich', genderW: 'weiblich', genderX: 'divers', genderInvalid: 'Bitte ein Geschlecht wählen.', photoTitle: 'Profilbild', photoPick: 'Foto wählen', photoChange: 'Foto ändern', photoRemove: 'Foto entfernen', photoSaved: 'Foto gespeichert', photoRemoved: 'Foto entfernt', photoFail: 'Das Bild konnte nicht verwendet werden.', memberAddNote: 'Die Person meldet sich mit der Handynummer an. Der PIN sind die letzten 6 Ziffern.',
       memberAdded: '{name} hinzugefügt', addFailed: 'Hinzufügen nicht möglich: {reason}', alreadyReg: 'Diese Handynummer ist schon registriert.', unknownError: 'unbekannter Fehler',
       resetPin: 'PIN zurücksetzen', confirmResetPin: 'PIN von {name} auf die letzten 6 Ziffern der Handynummer zurücksetzen?', pinReset: 'PIN zurückgesetzt',
       removeP: 'Entfernen', confirmRemove: '{name} entfernen? Konto, Gespräche, Notizen und Prep-Punkte werden gelöscht.', memberRemoved: 'Person entfernt',
@@ -139,7 +139,7 @@
       installTitle: 'Install app', installHint: 'Add the app to your home screen and it opens in full screen.',
       installBtn: 'Add to home screen', installIos: 'In Safari, tap “Share” and then “Add to Home Screen”.', logout: 'Sign out',
       peopleTitle: 'People', peopleHint: 'Visible to admins only. Add people and assign roles here.', personAdd: 'Add person',
-      firstName: 'First name', lastName: 'Last name', email: 'Email', emailInvalid: 'Please enter a valid email address.', memberAddNote: 'The person signs in with their mobile number. The PIN is the last 6 digits.',
+      firstName: 'First name', lastName: 'Last name', email: 'Email', emailInvalid: 'Please enter a valid email address.', gender: 'Gender', genderM: 'male', genderW: 'female', genderX: 'other', genderInvalid: 'Please select a gender.', photoTitle: 'Profile picture', photoPick: 'Choose photo', photoChange: 'Change photo', photoRemove: 'Remove photo', photoSaved: 'Photo saved', photoRemoved: 'Photo removed', photoFail: 'The image could not be used.', memberAddNote: 'The person signs in with their mobile number. The PIN is the last 6 digits.',
       memberAdded: '{name} added', addFailed: 'Could not add: {reason}', alreadyReg: 'This mobile number is already registered.', unknownError: 'unknown error',
       resetPin: 'Reset PIN', confirmResetPin: 'Reset the PIN of {name} to the last 6 digits of the mobile number?', pinReset: 'PIN reset',
       removeP: 'Remove', confirmRemove: 'Remove {name}? Account, conversations, notes and Prep items will be deleted.', memberRemoved: 'Person removed',
@@ -199,7 +199,7 @@
       installTitle: 'Installer l’application', installHint: 'Ajoute l’application à ton écran d’accueil, elle s’ouvrira alors en plein écran.',
       installBtn: 'Ajouter à l’écran d’accueil', installIos: 'Dans Safari, touche « Partager », puis « Sur l’écran d’accueil ».', logout: 'Se déconnecter',
       peopleTitle: 'Personnes', peopleHint: 'Visible uniquement pour les admins. Ici, tu crées des personnes et attribues des rôles.', personAdd: 'Ajouter une personne',
-      firstName: 'Prénom', lastName: 'Nom de famille', email: 'E-mail', emailInvalid: 'Veuillez saisir une adresse e-mail valide.', memberAddNote: 'La personne se connecte avec son numéro de mobile. Le PIN correspond aux 6 derniers chiffres.',
+      firstName: 'Prénom', lastName: 'Nom de famille', email: 'E-mail', emailInvalid: 'Veuillez saisir une adresse e-mail valide.', gender: 'Genre', genderM: 'homme', genderW: 'femme', genderX: 'autre', genderInvalid: 'Veuillez choisir un genre.', photoTitle: 'Photo de profil', photoPick: 'Choisir une photo', photoChange: 'Changer la photo', photoRemove: 'Supprimer la photo', photoSaved: 'Photo enregistrée', photoRemoved: 'Photo supprimée', photoFail: 'L’image n’a pas pu être utilisée.', memberAddNote: 'La personne se connecte avec son numéro de mobile. Le PIN correspond aux 6 derniers chiffres.',
       memberAdded: '{name} ajouté(e)', addFailed: 'Ajout impossible : {reason}', alreadyReg: 'Ce numéro est déjà enregistré.', unknownError: 'erreur inconnue',
       resetPin: 'Réinitialiser le PIN', confirmResetPin: 'Réinitialiser le PIN de {name} aux 6 derniers chiffres du numéro de mobile ?', pinReset: 'PIN réinitialisé',
       removeP: 'Retirer', confirmRemove: 'Retirer {name} ? Le compte, les conversations, les notes et les points de Prép. seront supprimés.', memberRemoved: 'Personne retirée',
@@ -259,7 +259,7 @@
       installTitle: 'Installa l’app', installHint: 'Aggiungi l’app alla schermata Home: si aprirà a schermo intero.',
       installBtn: 'Aggiungi alla schermata Home', installIos: 'In Safari tocca «Condividi» e poi «Aggiungi a Home».', logout: 'Esci',
       peopleTitle: 'Persone', peopleHint: 'Visibile solo agli admin. Qui crei persone e assegni ruoli.', personAdd: 'Aggiungi persona',
-      firstName: 'Nome', lastName: 'Cognome', email: 'E-mail', emailInvalid: 'Inserisci un indirizzo e-mail valido.', memberAddNote: 'La persona accede con il numero di cellulare. Il PIN sono le ultime 6 cifre.',
+      firstName: 'Nome', lastName: 'Cognome', email: 'E-mail', emailInvalid: 'Inserisci un indirizzo e-mail valido.', gender: 'Genere', genderM: 'maschile', genderW: 'femminile', genderX: 'altro', genderInvalid: 'Seleziona un genere.', photoTitle: 'Foto profilo', photoPick: 'Scegli foto', photoChange: 'Cambia foto', photoRemove: 'Rimuovi foto', photoSaved: 'Foto salvata', photoRemoved: 'Foto rimossa', photoFail: 'Impossibile usare l’immagine.', memberAddNote: 'La persona accede con il numero di cellulare. Il PIN sono le ultime 6 cifre.',
       memberAdded: '{name} aggiunto/a', addFailed: 'Impossibile aggiungere: {reason}', alreadyReg: 'Questo numero è già registrato.', unknownError: 'errore sconosciuto',
       resetPin: 'Reimposta PIN', confirmResetPin: 'Reimpostare il PIN di {name} sulle ultime 6 cifre del numero di cellulare?', pinReset: 'PIN reimpostato',
       removeP: 'Rimuovi', confirmRemove: 'Rimuovere {name}? Account, conversazioni, note e punti Prep verranno eliminati.', memberRemoved: 'Persona rimossa',
@@ -351,6 +351,37 @@
   /* ---------- Telefonnummer & Login ---------- */
   // Akzeptiert 079 123 45 67, +41 79 123 45 67, 0041 79 …; Leerschläge werden ignoriert.
   // Intern gespeichert wird immer das internationale Format (+41791234567).
+  function genderLabel(g) { return L(g === 'm' ? 'genderM' : g === 'w' ? 'genderW' : 'genderX'); }
+  function genderSelect(name, cur, withEmpty) {
+    return '<select class="input" name="' + name + '"' + (withEmpty ? ' required' : '') + '>' + (withEmpty ? '<option value="">–</option>' : '') +
+      ['m', 'w', 'x'].map(function (g) { return '<option value="' + g + '"' + (cur === g ? ' selected' : '') + '>' + esc(genderLabel(g)) + '</option>'; }).join('') + '</select>';
+  }
+  function avatarHtml(p, big) {
+    var cls = 'avatar' + (big ? ' big' : '');
+    if (p.avatar) return '<img class="' + cls + '" src="' + esc(p.avatar) + '" alt="">';
+    var ini = ((p.first || '').charAt(0) + (p.last || '').charAt(0)).toUpperCase();
+    return '<span class="' + cls + '" aria-hidden="true">' + esc(ini || '?') + '</span>';
+  }
+  // Bild quadratisch zuschneiden und auf 256 px verkleinern (JPEG), damit es klein bleibt
+  function resizeImage(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        try {
+          var side = Math.min(img.naturalWidth, img.naturalHeight), size = 256;
+          var c = document.createElement('canvas'); c.width = size; c.height = size;
+          var ctx = c.getContext('2d');
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, size, size);
+          ctx.drawImage(img, (img.naturalWidth - side) / 2, (img.naturalHeight - side) / 2, side, side, 0, 0, size, size);
+          var out = c.toDataURL('image/jpeg', 0.82);
+          URL.revokeObjectURL(url);
+          if (out.indexOf('data:image/jpeg;base64,') !== 0 || out.length > 120000) reject(new Error('image')); else resolve(out);
+        } catch (e) { reject(e); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('image')); };
+      img.src = url;
+    });
+  }
   function isEmail(v) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(v || '').trim()) && String(v).length <= 120; }
   function normPhone(raw) {
     var d = String(raw).replace(/\(0\)/g, '').replace(/[^\d+]/g, '');
@@ -413,7 +444,7 @@
 
   /* ---------- Daten laden ---------- */
   function mapProfile(r) {
-    return { id: r.id, first: r.first_name, last: r.last_name, name: r.name || ((r.first_name || '') + ' ' + (r.last_name || '')).trim(), email: r.email || '', phone: r.phone, role: ROLES.indexOf(r.role) > -1 ? r.role : 'talent', language: r.language || null, theme: r.theme || null, pinChanged: r.pin_changed === true };
+    return { id: r.id, first: r.first_name, gender: ['m', 'w', 'x'].indexOf(r.gender) > -1 ? r.gender : 'x', avatar: r.avatar || '', last: r.last_name, name: r.name || ((r.first_name || '') + ' ' + (r.last_name || '')).trim(), email: r.email || '', phone: r.phone, role: ROLES.indexOf(r.role) > -1 ? r.role : 'talent', language: r.language || null, theme: r.theme || null, pinChanged: r.pin_changed === true };
   }
   async function loadAll() {
     var uid = S.session.user.id;
@@ -768,7 +799,7 @@
   function viewPeople() {
     var rows = S.people.map(function (p) {
       var self = p.id === S.me.id;
-      return '<li><div class="personhead"><div><b>' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b><div class="muted small">' + esc(fmtPhone(p.phone)) + (p.email ? ' · ' + esc(p.email) : '') + '</div></div>' +
+      return '<li><div class="personhead">' + avatarHtml(p, false) + '<div style="flex:1;min-width:0"><b>' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b><div class="muted small">' + esc(fmtPhone(p.phone)) + (p.email ? ' · ' + esc(p.email) : '') + '</div></div>' +
         '<span class="badge">' + esc(roleLabel(p.role)) + '</span></div>' +
         '<div class="personrow"><select class="input" data-role-for="' + esc(p.id) + '" aria-label="' + esc(L('roleSelect')) + '"' + (self ? ' disabled' : '') + '>' +
         ROLES.map(function (r) { return '<option value="' + r + '"' + (p.role === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>' +
@@ -778,6 +809,7 @@
     var add = S.addPerson ? '<form data-form="person-add" style="margin-top:6px">' +
       fld(L('firstName'), '<input class="input" name="first" data-keep="pa-first" autocomplete="off" maxlength="60" required>') +
       fld(L('lastName'), '<input class="input" name="last" data-keep="pa-last" autocomplete="off" maxlength="60" required>') +
+      fld(L('gender'), genderSelect('gender', '', true)) +
       fld(L('phone'), '<input class="input" name="phone" type="tel" inputmode="tel" data-keep="pa-phone" placeholder="079 123 45 67" autocomplete="off" required>') +
       fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pa-email" autocomplete="off" maxlength="120" required>') +
       fld(L('roleSelect'), '<select class="input" name="role">' + ROLES.slice().reverse().map(function (r) { return '<option value="' + r + '">' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>') +
@@ -796,9 +828,14 @@
       else if (iosHint) install = '<section class="panel"><h2>' + L('installTitle') + '</h2><p>' + L('installIos') + '</p></section>';
     }
     return '<div class="top"><div><h1 class="pagetitle">' + L('profileTitle') + '</h1></div></div>' +
+      '<section class="panel avatar-panel">' + avatarHtml(S.me, true) +
+      '<div class="avatar-actions"><label class="btn ghost small" for="avatar-file">' + L(S.me.avatar ? 'photoChange' : 'photoPick') + '</label>' +
+      '<input id="avatar-file" class="visually-hidden" type="file" accept="image/*" data-avatar-file="1" aria-label="' + esc(L('photoTitle')) + '">' +
+      (S.me.avatar ? '<button type="button" class="linkbtn" data-act="avatar-remove">' + L('photoRemove') + '</button>' : '') + '</div></section>' +
       '<section class="panel">' +
       '<div class="profile-row"><span class="muted">' + L('nameLabel') + '</span><b>' + esc(S.me.name) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('phone') + '</span><b>' + esc(fmtPhone(S.me.phone)) + '</b></div>' +
+      '<div class="profile-row"><span class="muted">' + L('gender') + '</span><b>' + esc(genderLabel(S.me.gender)) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('email') + '</span><b>' + esc(S.me.email) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('roleLabel') + '</span><span class="badge">' + esc(roleLabel(S.me.role)) + '</span></div></section>' +
       '<section class="panel"><h2>' + L('language') + '</h2><p>' + L('languageHint') + '</p>' + langSelect() + '</section>' +
@@ -806,6 +843,7 @@
       '<section class="panel"><h2>' + L('nameChange') + '</h2><form data-form="name">' +
       fld(L('firstName'), '<input class="input" name="first" data-keep="pf-first" value="' + esc(S.me.first) + '" required maxlength="60">') +
       fld(L('lastName'), '<input class="input" name="last" data-keep="pf-last" value="' + esc(S.me.last) + '" required maxlength="60">') +
+      fld(L('gender'), genderSelect('gender', S.me.gender, true)) +
       fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pf-email" value="' + esc(S.me.email) + '" required maxlength="120">') +
       '<button class="btn" type="submit">' + L('nameSave') + '</button></form></section>' +
       '<section class="panel"><h2>' + L('phoneChange') + '</h2><p>' + L('phoneChangeNote') + '</p><form data-form="phone">' +
@@ -1036,6 +1074,11 @@
       S = freshState(); S.step = 'login'; render(); window.scrollTo(0, 0);
       return;
     }
+    if (a === 'avatar-remove') {
+      await act(function () { return sb.from('profiles').update({ avatar: null }).eq('id', S.me.id); }, L('photoRemoved'));
+      render();
+      return;
+    }
     if (a === 'pin-default') {
       try {
         var pr = await sb.auth.updateUser({ password: defaultPin(S.me.phone) });
@@ -1129,11 +1172,12 @@
   });
 
   /* ---------- Formulare ---------- */
-  async function addPerson(first, last, phoneRaw, email, role) {
+  async function addPerson(first, last, phoneRaw, email, gender, role) {
     var phone = normPhone(phoneRaw);
     var name = first + ' ' + last;
     if (!first || !last) return false;
     if (!isEmail(email)) { toast(L('emailInvalid')); return false; }
+    if (['m', 'w', 'x'].indexOf(gender) < 0) { toast(L('genderInvalid')); return false; }
     if (!phone) { toast(L('phoneInvalid')); return false; }
     if (S.people.some(function (p) { return p.phone === phone; })) { toast(L('alreadyReg')); return false; }
     try {
@@ -1141,7 +1185,7 @@
       if (code.error) throw code.error;
       // Eigener, kurzlebiger Client: die Sitzung des Admins bleibt unverändert
       var tmp = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
-      var r = await tmp.auth.signUp({ email: phoneToEmail(phone), password: defaultPin(phone), options: { data: { first_name: first, last_name: last, email: email, phone: phone, club_code: code.data || '' } } });
+      var r = await tmp.auth.signUp({ email: phoneToEmail(phone), password: defaultPin(phone), options: { data: { first_name: first, last_name: last, email: email, gender: gender, phone: phone, club_code: code.data || '' } } });
       if (r.error) throw r.error;
       if (role !== 'talent' && r.data && r.data.user) {
         var rr = await sb.rpc('set_role', { target: r.data.user.id, new_role: role });
@@ -1196,8 +1240,9 @@
     if (kind === 'name') {
       if (!g('first') || !g('last')) return;
       if (!isEmail(g('email'))) { toast(L('emailInvalid')); return; }
+      if (['m', 'w', 'x'].indexOf(g('gender')) < 0) { toast(L('genderInvalid')); return; }
       delete S.drafts['pf-first']; delete S.drafts['pf-last']; delete S.drafts['pf-email'];
-      await act(function () { return sb.from('profiles').update({ first_name: g('first'), last_name: g('last'), email: g('email') }).eq('id', S.me.id); }, L('nameSaved'));
+      await act(function () { return sb.from('profiles').update({ first_name: g('first'), last_name: g('last'), gender: g('gender'), email: g('email') }).eq('id', S.me.id); }, L('nameSaved'));
       render();
       return;
     }
@@ -1235,7 +1280,7 @@
       if (S.me.role !== 'admin') return;
       S.busy = true; render();
       var role = ROLES.indexOf(g('role')) > -1 ? g('role') : 'talent';
-      var ok = await addPerson(g('first'), g('last'), g('phone'), g('email'), role);
+      var ok = await addPerson(g('first'), g('last'), g('phone'), g('email'), g('gender'), role);
       S.busy = false;
       if (ok) { S.addPerson = false; delete S.drafts['pa-first']; delete S.drafts['pa-last']; delete S.drafts['pa-email']; delete S.drafts['pa-phone']; }
       render();
@@ -1246,6 +1291,16 @@
   document.addEventListener('change', async function (e) {
     var el = e.target;
     if (!el || !el.dataset) return;
+    if ('avatarFile' in el.dataset && S.me) {
+      var file = el.files && el.files[0];
+      el.value = '';
+      if (!file) return;
+      try {
+        var data = await resizeImage(file);
+        await act(function () { return sb.from('profiles').update({ avatar: data }).eq('id', S.me.id); }, L('photoSaved'));
+      } catch (err4) { console.error(err4); toast(L('photoFail')); }
+      return;
+    }
     if ('lang' in el.dataset) {
       setLang(el.value);
       if (S.step === 'app' && S.me) { saveLang(); render(); toast(L('langSaved')); } else render();

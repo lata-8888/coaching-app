@@ -28,6 +28,8 @@ create table if not exists public.profiles (
   first_name  text not null check (length(trim(first_name)) > 0),
   last_name   text not null check (length(trim(last_name)) > 0),
   name        text generated always as (trim(first_name) || ' ' || trim(last_name)) stored,
+  gender      text not null check (gender in ('m', 'w', 'x')),   -- männlich / weiblich / divers
+  avatar      text check (avatar is null or (avatar like 'data:image/jpeg;base64,%' and length(avatar) <= 120000)),  -- Profilbild (klein, im Browser verkleinert)
   phone       text not null unique,                 -- Login-Name (zusammen mit dem PIN)
   email       text not null check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),  -- Kontakt-Adresse, nicht für den Login
   role        text not null default 'talent' check (role in ('admin', 'mentor', 'talent')),
@@ -60,6 +62,23 @@ begin
       add constraint profiles_last_name_chk  check (length(trim(last_name)) > 0),
       add constraint profiles_email_chk check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),
       add column name text generated always as (trim(first_name) || ' ' || trim(last_name)) stored;
+  end if;
+end $$;
+
+-- Upgrade: Geschlecht und Profilbild nachrüsten (ältere Versionen)
+do $$
+begin
+  if not exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'profiles' and column_name = 'gender') then
+    alter table public.profiles add column gender text;
+    update public.profiles set gender = 'x';
+    alter table public.profiles
+      alter column gender set not null,
+      add constraint profiles_gender_chk check (gender in ('m', 'w', 'x'));
+  end if;
+  if not exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'profiles' and column_name = 'avatar') then
+    alter table public.profiles add column avatar text;
+    alter table public.profiles
+      add constraint profiles_avatar_chk check (avatar is null or (avatar like 'data:image/jpeg;base64,%' and length(avatar) <= 120000));
   end if;
 end $$;
 
@@ -267,13 +286,14 @@ declare
   fn text := trim(coalesce(new.raw_user_meta_data->>'first_name', ''));
   ln text := trim(coalesce(new.raw_user_meta_data->>'last_name', ''));
   em text := trim(coalesce(new.raw_user_meta_data->>'email', ''));
+  gd text := coalesce(new.raw_user_meta_data->>'gender', '');
 begin
-  if fn = '' or ln = '' or em = '' then
-    raise exception 'Vorname, Nachname und E-Mail sind Pflicht';
+  if fn = '' or ln = '' or em = '' or gd not in ('m', 'w', 'x') then
+    raise exception 'Vorname, Nachname, E-Mail und Geschlecht sind Pflicht';
   end if;
-  insert into public.profiles (id, first_name, last_name, phone, email, language)
+  insert into public.profiles (id, first_name, last_name, gender, phone, email, language)
   values (
-    new.id, fn, ln,
+    new.id, fn, ln, gd,
     coalesce(new.raw_user_meta_data->>'phone', new.email),
     em,
     case when new.raw_user_meta_data->>'language' in ('de', 'en', 'fr', 'it')
@@ -302,13 +322,13 @@ drop policy if exists "profiles_select" on public.profiles;
 create policy "profiles_select" on public.profiles
   for select to authenticated using (id = auth.uid() or public.is_admin());
 
--- Ändern darf jede Person nur Vorname, Nachname, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
+-- Ändern darf jede Person nur Vorname, Nachname, Geschlecht, Profilbild, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
 -- Rolle und Handynummer laufen ausschliesslich über die Funktionen set_role / update_own_phone.
 drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own" on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());
 revoke update on public.profiles from authenticated, anon;
-grant  update (first_name, last_name, email, language, pin_changed, theme) on public.profiles to authenticated;
+grant  update (first_name, last_name, gender, avatar, email, language, pin_changed, theme) on public.profiles to authenticated;
 
 -- Chat, Notizen, Prep: streng privat. Jede Person sieht und ändert nur die eigenen Einträge.
 do $$
