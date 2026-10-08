@@ -372,3 +372,9 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .pfrow .input { min-width: 0; padding: 8px 10px; }
 .pfform .btn[hidden] { display: none; }
 @media (max-width: 420px) { .ptile { flex-direction: column; align-items: center; } .pfform { width: 100%; } }
+
+.convo { display: flex; gap: 16px; align-items: flex-start; }
+.convofields { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.asspick { display: flex; flex-direction: column; align-items: center; gap: 6px; background: none; border: 0; padding: 0; color: var(--ink); width: 104px; text-align: center; font: inherit; }
+.asspick .small { overflow-wrap: anywhere; }
+.ghostav { border: 2px dashed var(--line); background: none; display: flex; align-items: center; justify-content: center; color: var(--muted); }
