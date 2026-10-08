@@ -36,10 +36,14 @@ Vanilla JS Single-Page-App, kein Build-Schritt, Backend Supabase. Vier Seiten (C
 
 ## Tests (nicht im Repo)
 Statisch: `node --check`, Übersetzungs-Parität, `SHELL`-Dateien, Tabellen/RPCs gegen `schema.sql`. Verhalten: jsdom gegen ein In-Memory-Supabase mit RLS-Nachbildung (Login, Bot-Ablauf, Notes, Prep, Profil, Rollen, Datenisolation).
-Nicht getestet: echtes Supabase (Schema ausgeführt, Realtime, Signup-Trigger) und echte Browser/Android-PWA-Installation.
+Nicht getestet: echtes Supabase (Schema ist ausgeführt und per SQL geprüft; Realtime und Signup-Ablauf noch nicht live) und echte Browser/Android-PWA-Installation.
+
+## Konventionen
+- Zip-Name: `Coaching-App_DEV_v<N>.zip` (N = `CACHE`-Nummer in `sw.js`), nur versionierte Dateien, ohne `.git`.
 
 ## Offene Aufgaben
-- [ ] `schema.sql` im DEV-Supabase ausführen, Zugangscode setzen, ersten Admin anlegen (README); `config.js` ist gefüllt
+- [x] `schema.sql` im DEV-Supabase ausgeführt, Zugangscode gesetzt (nicht im Repo)
+- [ ] „Confirm email“ in Supabase Auth ausschalten; ersten Admin anlegen (README)
 - [ ] GitHub Pages aktivieren (`main` → `/(root)`)
 - [ ] Bot an ein Sprachmodell anbinden (Edge Function) – optional
 - [ ] Mentor ↔ Talent zuordnen und Inhalte freigeben

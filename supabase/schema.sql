@@ -203,6 +203,9 @@ grant  execute on function public.reset_pin(uuid)              to authenticated;
 grant  execute on function public.get_club_code()              to authenticated;
 grant  execute on function public.remove_member(uuid)          to authenticated;
 grant  execute on function public.update_own_phone(text)       to authenticated;
+-- is_admin wird von den RLS-Regeln gebraucht (nur angemeldet); Trigger-Funktionen sind nie direkt aufrufbar.
+revoke execute on function public.is_admin() from public, anon;
+grant  execute on function public.is_admin() to authenticated;
 
 -- ---------- Registrierung: Zugangscode prüfen, Profil anlegen ----------
 -- Neue Konten erhalten immer die Rolle «talent». Die Rolle wird nie aus den Angaben des
@@ -248,6 +251,9 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
+
+revoke execute on function public.check_club_code() from public, anon, authenticated;
+revoke execute on function public.handle_new_user() from public, anon, authenticated;
 
 -- ---------- Zugriffsregeln (Row Level Security) ----------
 alter table public.profiles      enable row level security;
