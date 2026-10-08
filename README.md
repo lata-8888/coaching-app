@@ -17,7 +17,11 @@ Eine PRD-Umgebung gibt es noch nicht.
 | **Chat** | Gespräch zwischen Coach-Bot und Talent im Messenger-Stil. Der Bot führt durch Thema → drei Fragen → Angebot, hält auf Wunsch eine Notiz fest oder legt den nächsten Schritt in Prep. Jede Nachricht lässt sich antippen und per «Als Notiz» / «In Prep» übernehmen. |
 | **Notes** | Gedanken und Notizen mit Zeitstempel. Der Titel entsteht automatisch aus dem Inhalt und lässt sich von Hand überschreiben (leer lassen = wieder automatisch). |
 | **Prep** | Checkliste / Agenda für ein Meeting. Punkte von Hand erfassen oder aus Chat und Notes übernehmen; die Herkunft bleibt als Chip sichtbar und springt zur Quelle. Erledigen, sortieren, bearbeiten, Erledigte entfernen. |
-| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Name, Handynummer, PIN. Admins verwalten hier zusätzlich Personen und Rollen. |
+| **Profil** | Sprache (de, en, fr, it), Hell/Dunkel/Auto, Vorname, Nachname, E-Mail, Handynummer, PIN. Admins verwalten hier zusätzlich Personen und Rollen. |
+
+## Personendaten
+
+Jede Person (unabhängig von der Rolle) hat Vorname, Nachname, Handynummer und E-Mail. Angemeldet wird ausschliesslich mit Handynummer und PIN; die E-Mail ist nur eine Kontaktadresse im Profil (`profiles.email`) und hat mit dem Login nichts zu tun. `profiles.name` ist eine berechnete Spalte (Vorname + Nachname).
 
 ## Rollen
 
@@ -30,14 +34,14 @@ Eine PRD-Umgebung gibt es noch nicht.
 
 1. **Supabase-Projekt** (eigenes Projekt für die Coaching-App): angelegt, `ofdkpdmcfqnelqoaeshx`.
 2. **Auth → Providers → Email**: «Confirm email» ausschalten (Login läuft über synthetische Adressen `<Nummer>@phone-login.app`).
-3. **SQL Editor**: `supabase/schema.sql` ausführen (idempotent).
+3. **SQL Editor**: `supabase/schema.sql` ausführen (idempotent; hebt auch eine ältere Version mit nur «name» auf Vorname/Nachname/E-Mail an).
 4. **Zugangscode setzen**: `update public.app_settings set value = '<geheimer Code>' where key = 'club_code';`
 5. **config.js**: URL und Publishable Key des Projekts sind eingetragen. Den `service_role`-Schlüssel nie eintragen.
 6. **Ersten Admin anlegen**: App öffnen, in der Browser-Konsole ausführen (Nummer, Name und Code anpassen):
    ```js
    const c = supabase.createClient(APP_CONFIG.SUPABASE_URL, APP_CONFIG.SUPABASE_ANON_KEY);
    await c.auth.signUp({ email: '41791234567@phone-login.app', password: '234567',
-     options: { data: { name: 'Vorname Nachname', phone: '+41791234567', club_code: '<geheimer Code>' } } });
+     options: { data: { first_name: 'Vorname', last_name: 'Nachname', email: 'name@example.com', phone: '+41791234567', club_code: '<geheimer Code>' } } });
    ```
    Der PIN ist die Nummer ohne `+`, letzte 6 Ziffern. Danach im SQL Editor: `update public.profiles set role = 'admin' where phone = '+41791234567';`
 7. Anmelden, im Profil den eigenen PIN setzen. Weitere Personen legt der Admin im Profil an.

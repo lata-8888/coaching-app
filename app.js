@@ -66,7 +66,7 @@
       srcNote: 'Notiz', srcChat: 'Chat', srcGone: 'Quelle gelöscht', moveUp: 'Nach oben', moveDown: 'Nach unten', confirmClearDone: 'Alle erledigten Punkte entfernen?',
       coachLabel: 'Coach', youLabel: 'Du',
       profileTitle: 'Mein Profil', roleLabel: 'Rolle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Name',
-      nameChange: 'Name', nameSave: 'Name speichern', nameSaved: 'Name gespeichert',
+      nameChange: 'Persönliche Angaben', nameSave: 'Angaben speichern', nameSaved: 'Angaben gespeichert',
       phoneChange: 'Handynummer ändern', phoneNew: 'Neue Handynummer', phoneSave: 'Nummer speichern', phoneSaved: 'Handynummer gespeichert',
       phoneTaken: 'Diese Handynummer gehört schon jemand anderem.', phoneChangeNote: 'Du meldest dich danach mit der neuen Nummer an. Dein PIN bleibt gleich.',
       confirmPhone: 'Handynummer auf {phone} ändern?',
@@ -79,7 +79,7 @@
       installTitle: 'App installieren', installHint: 'Lege die App auf deinen Startbildschirm, dann öffnet sie sich im Vollbild.',
       installBtn: 'Auf dem Startbildschirm speichern', installIos: 'Tippe in Safari auf «Teilen» und dann auf «Zum Home-Bildschirm».', logout: 'Abmelden',
       peopleTitle: 'Personen', peopleHint: 'Nur für Admins sichtbar. Hier legst du Personen an und vergibst Rollen.', personAdd: 'Person hinzufügen',
-      fullName: 'Vor- und Nachname', memberAddNote: 'Die Person meldet sich mit der Handynummer an. Der PIN sind die letzten 6 Ziffern.',
+      firstName: 'Vorname', lastName: 'Nachname', email: 'E-Mail', emailInvalid: 'Bitte eine gültige E-Mail-Adresse eingeben.', memberAddNote: 'Die Person meldet sich mit der Handynummer an. Der PIN sind die letzten 6 Ziffern.',
       memberAdded: '{name} hinzugefügt', addFailed: 'Hinzufügen nicht möglich: {reason}', alreadyReg: 'Diese Handynummer ist schon registriert.', unknownError: 'unbekannter Fehler',
       resetPin: 'PIN zurücksetzen', confirmResetPin: 'PIN von {name} auf die letzten 6 Ziffern der Handynummer zurücksetzen?', pinReset: 'PIN zurückgesetzt',
       removeP: 'Entfernen', confirmRemove: '{name} entfernen? Konto, Gespräche, Notizen und Prep-Punkte werden gelöscht.', memberRemoved: 'Person entfernt',
@@ -126,7 +126,7 @@
       srcNote: 'Note', srcChat: 'Chat', srcGone: 'Source deleted', moveUp: 'Move up', moveDown: 'Move down', confirmClearDone: 'Remove all completed items?',
       coachLabel: 'Coach', youLabel: 'You',
       profileTitle: 'My profile', roleLabel: 'Role', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Name',
-      nameChange: 'Name', nameSave: 'Save name', nameSaved: 'Name saved',
+      nameChange: 'Personal details', nameSave: 'Save details', nameSaved: 'Details saved',
       phoneChange: 'Change mobile number', phoneNew: 'New mobile number', phoneSave: 'Save number', phoneSaved: 'Mobile number saved',
       phoneTaken: 'This mobile number already belongs to someone else.', phoneChangeNote: 'You will then sign in with the new number. Your PIN stays the same.',
       confirmPhone: 'Change mobile number to {phone}?',
@@ -139,7 +139,7 @@
       installTitle: 'Install app', installHint: 'Add the app to your home screen and it opens in full screen.',
       installBtn: 'Add to home screen', installIos: 'In Safari, tap “Share” and then “Add to Home Screen”.', logout: 'Sign out',
       peopleTitle: 'People', peopleHint: 'Visible to admins only. Add people and assign roles here.', personAdd: 'Add person',
-      fullName: 'First and last name', memberAddNote: 'The person signs in with their mobile number. The PIN is the last 6 digits.',
+      firstName: 'First name', lastName: 'Last name', email: 'Email', emailInvalid: 'Please enter a valid email address.', memberAddNote: 'The person signs in with their mobile number. The PIN is the last 6 digits.',
       memberAdded: '{name} added', addFailed: 'Could not add: {reason}', alreadyReg: 'This mobile number is already registered.', unknownError: 'unknown error',
       resetPin: 'Reset PIN', confirmResetPin: 'Reset the PIN of {name} to the last 6 digits of the mobile number?', pinReset: 'PIN reset',
       removeP: 'Remove', confirmRemove: 'Remove {name}? Account, conversations, notes and Prep items will be deleted.', memberRemoved: 'Person removed',
@@ -185,8 +185,8 @@
       pickTitle: 'Reprendre depuis Chat / Notes', pickNotes: 'Notes', pickChat: 'Chat', pickEmpty: 'Rien ici pour l’instant.', pickAdd: 'Ajouter', pickAdded: 'Déjà ajouté',
       srcNote: 'Note', srcChat: 'Chat', srcGone: 'Source supprimée', moveUp: 'Monter', moveDown: 'Descendre', confirmClearDone: 'Retirer tous les points terminés ?',
       coachLabel: 'Coach', youLabel: 'Toi',
-      profileTitle: 'Mon profil', roleLabel: 'Rôle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Nom',
-      nameChange: 'Nom', nameSave: 'Enregistrer le nom', nameSaved: 'Nom enregistré',
+      profileTitle: 'Mon profil', roleLabel: 'Rôle', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Nom complet',
+      nameChange: 'Données personnelles', nameSave: 'Enregistrer les données', nameSaved: 'Données enregistrées',
       phoneChange: 'Changer le numéro de mobile', phoneNew: 'Nouveau numéro de mobile', phoneSave: 'Enregistrer le numéro', phoneSaved: 'Numéro enregistré',
       phoneTaken: 'Ce numéro appartient déjà à quelqu’un d’autre.', phoneChangeNote: 'Tu te connecteras ensuite avec le nouveau numéro. Ton PIN reste le même.',
       confirmPhone: 'Changer le numéro de mobile en {phone} ?',
@@ -199,7 +199,7 @@
       installTitle: 'Installer l’application', installHint: 'Ajoute l’application à ton écran d’accueil, elle s’ouvrira alors en plein écran.',
       installBtn: 'Ajouter à l’écran d’accueil', installIos: 'Dans Safari, touche « Partager », puis « Sur l’écran d’accueil ».', logout: 'Se déconnecter',
       peopleTitle: 'Personnes', peopleHint: 'Visible uniquement pour les admins. Ici, tu crées des personnes et attribues des rôles.', personAdd: 'Ajouter une personne',
-      fullName: 'Prénom et nom', memberAddNote: 'La personne se connecte avec son numéro de mobile. Le PIN correspond aux 6 derniers chiffres.',
+      firstName: 'Prénom', lastName: 'Nom de famille', email: 'E-mail', emailInvalid: 'Veuillez saisir une adresse e-mail valide.', memberAddNote: 'La personne se connecte avec son numéro de mobile. Le PIN correspond aux 6 derniers chiffres.',
       memberAdded: '{name} ajouté(e)', addFailed: 'Ajout impossible : {reason}', alreadyReg: 'Ce numéro est déjà enregistré.', unknownError: 'erreur inconnue',
       resetPin: 'Réinitialiser le PIN', confirmResetPin: 'Réinitialiser le PIN de {name} aux 6 derniers chiffres du numéro de mobile ?', pinReset: 'PIN réinitialisé',
       removeP: 'Retirer', confirmRemove: 'Retirer {name} ? Le compte, les conversations, les notes et les points de Prép. seront supprimés.', memberRemoved: 'Personne retirée',
@@ -245,8 +245,8 @@
       pickTitle: 'Prendi da Chat / Note', pickNotes: 'Note', pickChat: 'Chat', pickEmpty: 'Per ora non c’è nulla.', pickAdd: 'Aggiungi', pickAdded: 'Già presente',
       srcNote: 'Nota', srcChat: 'Chat', srcGone: 'Fonte eliminata', moveUp: 'Su', moveDown: 'Giù', confirmClearDone: 'Rimuovere tutti i punti completati?',
       coachLabel: 'Coach', youLabel: 'Tu',
-      profileTitle: 'Il mio profilo', roleLabel: 'Ruolo', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Nome',
-      nameChange: 'Nome', nameSave: 'Salva nome', nameSaved: 'Nome salvato',
+      profileTitle: 'Il mio profilo', roleLabel: 'Ruolo', roleAdmin: 'Admin', roleMentor: 'Mentor', roleTalent: 'Talent', nameLabel: 'Nome e cognome',
+      nameChange: 'Dati personali', nameSave: 'Salva i dati', nameSaved: 'Dati salvati',
       phoneChange: 'Cambia numero di cellulare', phoneNew: 'Nuovo numero di cellulare', phoneSave: 'Salva numero', phoneSaved: 'Numero salvato',
       phoneTaken: 'Questo numero appartiene già a un’altra persona.', phoneChangeNote: 'Poi accederai con il nuovo numero. Il tuo PIN resta uguale.',
       confirmPhone: 'Cambiare il numero di cellulare in {phone}?',
@@ -259,7 +259,7 @@
       installTitle: 'Installa l’app', installHint: 'Aggiungi l’app alla schermata Home: si aprirà a schermo intero.',
       installBtn: 'Aggiungi alla schermata Home', installIos: 'In Safari tocca «Condividi» e poi «Aggiungi a Home».', logout: 'Esci',
       peopleTitle: 'Persone', peopleHint: 'Visibile solo agli admin. Qui crei persone e assegni ruoli.', personAdd: 'Aggiungi persona',
-      fullName: 'Nome e cognome', memberAddNote: 'La persona accede con il numero di cellulare. Il PIN sono le ultime 6 cifre.',
+      firstName: 'Nome', lastName: 'Cognome', email: 'E-mail', emailInvalid: 'Inserisci un indirizzo e-mail valido.', memberAddNote: 'La persona accede con il numero di cellulare. Il PIN sono le ultime 6 cifre.',
       memberAdded: '{name} aggiunto/a', addFailed: 'Impossibile aggiungere: {reason}', alreadyReg: 'Questo numero è già registrato.', unknownError: 'errore sconosciuto',
       resetPin: 'Reimposta PIN', confirmResetPin: 'Reimpostare il PIN di {name} sulle ultime 6 cifre del numero di cellulare?', pinReset: 'PIN reimpostato',
       removeP: 'Rimuovi', confirmRemove: 'Rimuovere {name}? Account, conversazioni, note e punti Prep verranno eliminati.', memberRemoved: 'Persona rimossa',
@@ -351,6 +351,7 @@
   /* ---------- Telefonnummer & Login ---------- */
   // Akzeptiert 079 123 45 67, +41 79 123 45 67, 0041 79 …; Leerschläge werden ignoriert.
   // Intern gespeichert wird immer das internationale Format (+41791234567).
+  function isEmail(v) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(v || '').trim()) && String(v).length <= 120; }
   function normPhone(raw) {
     var d = String(raw).replace(/\(0\)/g, '').replace(/[^\d+]/g, '');
     if (d.indexOf('00') === 0) d = '+' + d.slice(2);
@@ -412,7 +413,7 @@
 
   /* ---------- Daten laden ---------- */
   function mapProfile(r) {
-    return { id: r.id, name: r.name, phone: r.phone, role: ROLES.indexOf(r.role) > -1 ? r.role : 'talent', language: r.language || null, theme: r.theme || null, pinChanged: r.pin_changed === true };
+    return { id: r.id, first: r.first_name, last: r.last_name, name: r.name || ((r.first_name || '') + ' ' + (r.last_name || '')).trim(), email: r.email || '', phone: r.phone, role: ROLES.indexOf(r.role) > -1 ? r.role : 'talent', language: r.language || null, theme: r.theme || null, pinChanged: r.pin_changed === true };
   }
   async function loadAll() {
     var uid = S.session.user.id;
@@ -552,7 +553,7 @@
   async function greetIfEmpty() {
     if (S.greeting || S.chat.length || !S.me) return;
     S.greeting = true;
-    try { await botSay({ kind: 'greet', text: L('botGreet', { name: S.me.name.split(' ')[0] }), chips: TOPICS.join(',') }); }
+    try { await botSay({ kind: 'greet', text: L('botGreet', { name: S.me.first }), chips: TOPICS.join(',') }); }
     finally { S.greeting = false; }
   }
 
@@ -767,7 +768,7 @@
   function viewPeople() {
     var rows = S.people.map(function (p) {
       var self = p.id === S.me.id;
-      return '<li><div class="personhead"><div><b>' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b><div class="muted small">' + esc(fmtPhone(p.phone)) + '</div></div>' +
+      return '<li><div class="personhead"><div><b>' + esc(p.name) + (self ? ' <span class="muted small">' + L('you') + '</span>' : '') + '</b><div class="muted small">' + esc(fmtPhone(p.phone)) + (p.email ? ' · ' + esc(p.email) : '') + '</div></div>' +
         '<span class="badge">' + esc(roleLabel(p.role)) + '</span></div>' +
         '<div class="personrow"><select class="input" data-role-for="' + esc(p.id) + '" aria-label="' + esc(L('roleSelect')) + '"' + (self ? ' disabled' : '') + '>' +
         ROLES.map(function (r) { return '<option value="' + r + '"' + (p.role === r ? ' selected' : '') + '>' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>' +
@@ -775,8 +776,10 @@
         (self ? '' : '<button type="button" class="mini del" data-act="person-del" data-id="' + esc(p.id) + '">' + L('removeP') + '</button>') + '</div></li>';
     }).join('');
     var add = S.addPerson ? '<form data-form="person-add" style="margin-top:6px">' +
-      fld(L('fullName'), '<input class="input" name="name" data-keep="pa-name" autocomplete="off" required>') +
+      fld(L('firstName'), '<input class="input" name="first" data-keep="pa-first" autocomplete="off" maxlength="60" required>') +
+      fld(L('lastName'), '<input class="input" name="last" data-keep="pa-last" autocomplete="off" maxlength="60" required>') +
       fld(L('phone'), '<input class="input" name="phone" type="tel" inputmode="tel" data-keep="pa-phone" placeholder="079 123 45 67" autocomplete="off" required>') +
+      fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pa-email" autocomplete="off" maxlength="120" required>') +
       fld(L('roleSelect'), '<select class="input" name="role">' + ROLES.slice().reverse().map(function (r) { return '<option value="' + r + '">' + esc(roleLabel(r)) + '</option>'; }).join('') + '</select>') +
       '<p class="small muted" style="margin-bottom:12px">' + L('memberAddNote') + '</p>' +
       '<button class="btn accent" type="submit"' + (S.busy ? ' disabled' : '') + '>' + L('personAdd') + '</button></form>' : '';
@@ -796,11 +799,14 @@
       '<section class="panel">' +
       '<div class="profile-row"><span class="muted">' + L('nameLabel') + '</span><b>' + esc(S.me.name) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('phone') + '</span><b>' + esc(fmtPhone(S.me.phone)) + '</b></div>' +
+      '<div class="profile-row"><span class="muted">' + L('email') + '</span><b>' + esc(S.me.email) + '</b></div>' +
       '<div class="profile-row"><span class="muted">' + L('roleLabel') + '</span><span class="badge">' + esc(roleLabel(S.me.role)) + '</span></div></section>' +
       '<section class="panel"><h2>' + L('language') + '</h2><p>' + L('languageHint') + '</p>' + langSelect() + '</section>' +
       '<section class="panel"><h2>' + L('themeTitle') + '</h2><p>' + L('themeHint') + '</p>' + themeSelect() + '</section>' +
       '<section class="panel"><h2>' + L('nameChange') + '</h2><form data-form="name">' +
-      fld(L('nameLabel'), '<input class="input" name="name" data-keep="pf-name" value="' + esc(S.me.name) + '" required maxlength="80">') +
+      fld(L('firstName'), '<input class="input" name="first" data-keep="pf-first" value="' + esc(S.me.first) + '" required maxlength="60">') +
+      fld(L('lastName'), '<input class="input" name="last" data-keep="pf-last" value="' + esc(S.me.last) + '" required maxlength="60">') +
+      fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pf-email" value="' + esc(S.me.email) + '" required maxlength="120">') +
       '<button class="btn" type="submit">' + L('nameSave') + '</button></form></section>' +
       '<section class="panel"><h2>' + L('phoneChange') + '</h2><p>' + L('phoneChangeNote') + '</p><form data-form="phone">' +
       fld(L('phoneNew'), '<input class="input" name="phone" type="tel" inputmode="tel" autocomplete="off" data-keep="pf-phone" placeholder="079 123 45 67" required>') +
@@ -1123,9 +1129,11 @@
   });
 
   /* ---------- Formulare ---------- */
-  async function addPerson(name, phoneRaw, role) {
+  async function addPerson(first, last, phoneRaw, email, role) {
     var phone = normPhone(phoneRaw);
-    if (!name) return false;
+    var name = first + ' ' + last;
+    if (!first || !last) return false;
+    if (!isEmail(email)) { toast(L('emailInvalid')); return false; }
     if (!phone) { toast(L('phoneInvalid')); return false; }
     if (S.people.some(function (p) { return p.phone === phone; })) { toast(L('alreadyReg')); return false; }
     try {
@@ -1133,7 +1141,7 @@
       if (code.error) throw code.error;
       // Eigener, kurzlebiger Client: die Sitzung des Admins bleibt unverändert
       var tmp = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
-      var r = await tmp.auth.signUp({ email: phoneToEmail(phone), password: defaultPin(phone), options: { data: { name: name, phone: phone, club_code: code.data || '' } } });
+      var r = await tmp.auth.signUp({ email: phoneToEmail(phone), password: defaultPin(phone), options: { data: { first_name: first, last_name: last, email: email, phone: phone, club_code: code.data || '' } } });
       if (r.error) throw r.error;
       if (role !== 'talent' && r.data && r.data.user) {
         var rr = await sb.rpc('set_role', { target: r.data.user.id, new_role: role });
@@ -1186,9 +1194,10 @@
       return;
     }
     if (kind === 'name') {
-      if (!g('name')) return;
-      delete S.drafts['pf-name'];
-      await act(function () { return sb.from('profiles').update({ name: g('name') }).eq('id', S.me.id); }, L('nameSaved'));
+      if (!g('first') || !g('last')) return;
+      if (!isEmail(g('email'))) { toast(L('emailInvalid')); return; }
+      delete S.drafts['pf-first']; delete S.drafts['pf-last']; delete S.drafts['pf-email'];
+      await act(function () { return sb.from('profiles').update({ first_name: g('first'), last_name: g('last'), email: g('email') }).eq('id', S.me.id); }, L('nameSaved'));
       render();
       return;
     }
@@ -1226,9 +1235,9 @@
       if (S.me.role !== 'admin') return;
       S.busy = true; render();
       var role = ROLES.indexOf(g('role')) > -1 ? g('role') : 'talent';
-      var ok = await addPerson(g('name'), g('phone'), role);
+      var ok = await addPerson(g('first'), g('last'), g('phone'), g('email'), role);
       S.busy = false;
-      if (ok) { S.addPerson = false; delete S.drafts['pa-name']; delete S.drafts['pa-phone']; }
+      if (ok) { S.addPerson = false; delete S.drafts['pa-first']; delete S.drafts['pa-last']; delete S.drafts['pa-email']; delete S.drafts['pa-phone']; }
       render();
       return;
     }

@@ -25,14 +25,43 @@ insert into public.app_settings (key, value) values ('club_code', 'CHANGE-ME')
 -- Rollen: admin (verwaltet Personen), mentor, talent (Standard für neue Konten)
 create table if not exists public.profiles (
   id          uuid primary key references auth.users(id) on delete cascade,
-  name        text not null,
-  phone       text not null unique,
+  first_name  text not null check (length(trim(first_name)) > 0),
+  last_name   text not null check (length(trim(last_name)) > 0),
+  name        text generated always as (trim(first_name) || ' ' || trim(last_name)) stored,
+  phone       text not null unique,                 -- Login-Name (zusammen mit dem PIN)
+  email       text not null check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),  -- Kontakt-Adresse, nicht für den Login
   role        text not null default 'talent' check (role in ('admin', 'mentor', 'talent')),
   language    text check (language is null or language in ('de', 'en', 'fr', 'it')),
   theme       text check (theme is null or theme in ('light', 'dark')),   -- null = automatisch
   pin_changed boolean not null default false,
   created_at  timestamptz not null default now()
 );
+
+-- Upgrade einer älteren Version (Spalte «name» als freier Text) auf Vorname/Nachname/E-Mail
+do $$
+begin
+  if exists (select 1 from information_schema.columns
+              where table_schema = 'public' and table_name = 'profiles'
+                and column_name = 'name' and is_generated = 'NEVER') then
+    alter table public.profiles
+      add column if not exists first_name text,
+      add column if not exists last_name  text,
+      add column if not exists email      text;
+    update public.profiles set
+      first_name = coalesce(first_name, nullif(split_part(name, ' ', 1), ''), 'Unbekannt'),
+      last_name  = coalesce(last_name, nullif(trim(substr(name, length(split_part(name, ' ', 1)) + 1)), ''), '-'),
+      email      = coalesce(email, 'bitte-ergaenzen@example.invalid');
+    alter table public.profiles drop column name;
+    alter table public.profiles
+      alter column first_name set not null,
+      alter column last_name  set not null,
+      alter column email      set not null,
+      add constraint profiles_first_name_chk check (length(trim(first_name)) > 0),
+      add constraint profiles_last_name_chk  check (length(trim(last_name)) > 0),
+      add constraint profiles_email_chk check (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),
+      add column name text generated always as (trim(first_name) || ' ' || trim(last_name)) stored;
+  end if;
+end $$;
 
 -- ---------- Chat (Gespräch zwischen Bot und Talent) ----------
 -- sender: 'bot' oder 'user'.
@@ -234,12 +263,19 @@ create or replace function public.handle_new_user()
 returns trigger
 language plpgsql security definer set search_path = public
 as $$
+declare
+  fn text := trim(coalesce(new.raw_user_meta_data->>'first_name', ''));
+  ln text := trim(coalesce(new.raw_user_meta_data->>'last_name', ''));
+  em text := trim(coalesce(new.raw_user_meta_data->>'email', ''));
 begin
-  insert into public.profiles (id, name, phone, language)
+  if fn = '' or ln = '' or em = '' then
+    raise exception 'Vorname, Nachname und E-Mail sind Pflicht';
+  end if;
+  insert into public.profiles (id, first_name, last_name, phone, email, language)
   values (
-    new.id,
-    coalesce(nullif(trim(new.raw_user_meta_data->>'name'), ''), 'Unbekannt'),
+    new.id, fn, ln,
     coalesce(new.raw_user_meta_data->>'phone', new.email),
+    em,
     case when new.raw_user_meta_data->>'language' in ('de', 'en', 'fr', 'it')
          then new.raw_user_meta_data->>'language' else null end
   );
@@ -266,13 +302,13 @@ drop policy if exists "profiles_select" on public.profiles;
 create policy "profiles_select" on public.profiles
   for select to authenticated using (id = auth.uid() or public.is_admin());
 
--- Ändern darf jede Person nur Name, Sprache, Darstellung und pin_changed des eigenen Profils.
+-- Ändern darf jede Person nur Vorname, Nachname, E-Mail, Sprache, Darstellung und pin_changed des eigenen Profils.
 -- Rolle und Handynummer laufen ausschliesslich über die Funktionen set_role / update_own_phone.
 drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own" on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());
 revoke update on public.profiles from authenticated, anon;
-grant  update (name, language, pin_changed, theme) on public.profiles to authenticated;
+grant  update (first_name, last_name, email, language, pin_changed, theme) on public.profiles to authenticated;
 
 -- Chat, Notizen, Prep: streng privat. Jede Person sieht und ändert nur die eigenen Einträge.
 do $$
