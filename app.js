@@ -923,9 +923,11 @@
   }
   // Kachel oben im Profil: Bild mit Stift-Symbol am Rand, Name, Rolle
   function profileTile() {
-    return '<section class="panel ptile"><div class="avwrap">' + avatarHtml(S.me, true) +
+    var m = S.me;
+    return '<section class="panel ptile"><div class="avwrap">' + avatarHtml(m, true) +
       '<button type="button" class="avedit" data-act="pf-edit" data-field="photo" aria-label="' + esc(L('photoTitle')) + '">' + ICON.edit + '</button></div>' +
-      '<h2 class="ptname">' + esc(S.me.name) + '</h2><span class="badge">' + esc(roleLabel(S.me.role)) + '</span></section>';
+      '<div class="ptinfo"><h2 class="ptname">' + esc(m.first) + '<br>' + esc(m.last) + '</h2>' +
+      '<div class="small">' + esc(fmtPhone(m.phone)) + '</div><div class="small">' + esc(m.email) + '</div></div></section>';
   }
   function viewProfile() {
     var iosHint = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
@@ -939,9 +941,8 @@
       profileTile() +
       accordion('data', L('nameChange'), esc(fmtPhone(S.me.phone)), profileRows()) +
       (S.me.role === 'talent' ? accordion('assistant', L('assistantTitle'), esc((S.assistants.filter(function (a) { return a.id === S.me.assistantId; })[0] || { name: '–' }).name), assistantBody()) : '') +
-      accordion('lang', L('language') + ' · ' + L('addressTitle'), esc(LANG_NAMES[lang] + ' · ' + L(S.me.addressForm === 'formal' ? 'addressFormal' : 'addressInformal')),
-        '<div class="duo">' + fld(L('language'), langSelect()) + fld(L('addressTitle'), addressSelect()) + '</div><p class="small muted" style="margin:0">' + L('languageHint') + '</p>') +
-      accordion('theme', L('themeTitle'), esc(L(theme === 'dark' ? 'themeDark' : theme === 'light' ? 'themeLight' : 'themeAuto')), '<p>' + L('themeHint') + '</p>' + themeSelect()) +
+      '<section class="panel"><div class="duo">' + fld(L('language'), langSelect()) + fld(L('addressTitle'), addressSelect()) + '</div><p class="small muted" style="margin:8px 0 0">' + L('languageHint') + '</p></section>' +
+      '<section class="panel"><h2>' + L('themeTitle') + '</h2><p>' + L('themeHint') + '</p>' + themeSelect() + '</section>' +
       install +
       '<button type="button" class="btn dangerbtn" data-act="logout">' + ICON.logout + L('logout') + '</button>' +
       (S.pfEdit ? profileSheetHtml() : '');

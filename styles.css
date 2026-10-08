@@ -350,3 +350,8 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .acc-body { padding: 0 16px 16px; }
 .acc-body .ptable { margin-top: -6px; }
 .acc-body > p:first-child { margin-top: 0; }
+
+.ptile { flex-direction: row; align-items: center; text-align: left; gap: 16px; }
+.ptinfo { min-width: 0; flex: 1; }
+.ptinfo .ptname { line-height: 1.2; margin-bottom: 4px; }
+.ptinfo .small { overflow-wrap: anywhere; }
