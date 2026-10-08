@@ -383,3 +383,5 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .pfform .input { padding: 10px 12px; }
 .convo > * { flex: 1 1 0; min-width: 0; }
 .asspick { width: auto; }
+
+.asspick { align-items: flex-start; text-align: left; }
