@@ -5,7 +5,7 @@
 | | DEV | PRD |
 |---|---|---|
 | **GitHub** | `lata-8888/coaching-app` | – (noch nicht angelegt) |
-| **Supabase** | noch anzulegen | – |
+| **Supabase** | `ofdkpdmcfqnelqoaeshx` | – |
 | **GitHub Pages** | `lata-8888.github.io/coaching-app/` | – |
 
 **Regel:** Änderungen zuerst in DEV. Die Coaching-App hat ein eigenes Supabase-Projekt und teilt nichts mit der FBRO-App (`lata-8888/fbro-dev`, dient nur als Konzeptvorlage).
@@ -39,7 +39,7 @@ Statisch: `node --check`, Übersetzungs-Parität, `SHELL`-Dateien, Tabellen/RPCs
 Nicht getestet: echtes Supabase (Schema ausgeführt, Realtime, Signup-Trigger) und echte Browser/Android-PWA-Installation.
 
 ## Offene Aufgaben
-- [ ] Supabase-Projekt für DEV anlegen, `schema.sql` ausführen, `config.js` füllen, ersten Admin anlegen (README)
+- [ ] `schema.sql` im DEV-Supabase ausführen, Zugangscode setzen, ersten Admin anlegen (README); `config.js` ist gefüllt
 - [ ] GitHub Pages aktivieren (`main` → `/(root)`)
 - [ ] Bot an ein Sprachmodell anbinden (Edge Function) – optional
 - [ ] Mentor ↔ Talent zuordnen und Inhalte freigeben

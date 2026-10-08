@@ -5,7 +5,7 @@ Vanilla-JS-PWA ohne Build-Schritt, Backend auf Supabase. Konzepte (Login per Han
 | | DEV |
 |---|---|
 | **GitHub** | `lata-8888/coaching-app` |
-| **Supabase** | noch anzulegen (siehe Einrichtung) |
+| **Supabase** | `ofdkpdmcfqnelqoaeshx` |
 | **URL** | `lata-8888.github.io/coaching-app/` (GitHub Pages: Settings → Pages → `main` → `/(root)`) |
 
 Eine PRD-Umgebung gibt es noch nicht.
@@ -28,11 +28,11 @@ Eine PRD-Umgebung gibt es noch nicht.
 
 ## Einrichtung (DEV)
 
-1. **Supabase-Projekt anlegen** (eigenes Projekt für die Coaching-App).
+1. **Supabase-Projekt** (eigenes Projekt für die Coaching-App): angelegt, `ofdkpdmcfqnelqoaeshx`.
 2. **Auth → Providers → Email**: «Confirm email» ausschalten (Login läuft über synthetische Adressen `<Nummer>@phone-login.app`).
 3. **SQL Editor**: `supabase/schema.sql` ausführen (idempotent).
 4. **Zugangscode setzen**: `update public.app_settings set value = '<geheimer Code>' where key = 'club_code';`
-5. **config.js**: `SUPABASE_URL` und `SUPABASE_ANON_KEY` (anon public) eintragen. Den `service_role`-Schlüssel nie eintragen.
+5. **config.js**: URL und Publishable Key des Projekts sind eingetragen. Den `service_role`-Schlüssel nie eintragen.
 6. **Ersten Admin anlegen**: App öffnen, in der Browser-Konsole ausführen (Nummer, Name und Code anpassen):
    ```js
    const c = supabase.createClient(APP_CONFIG.SUPABASE_URL, APP_CONFIG.SUPABASE_ANON_KEY);

@@ -2,10 +2,10 @@
 // Die Werte findest du in Supabase unter «Project Settings» → «API».
 // Der «anon public»-Schlüssel ist für den Einsatz im Browser gedacht und darf öffentlich sein.
 // Den «service_role»-Schlüssel darfst du hier NIE eintragen.
-// Solange hier «DEIN-PROJEKT» steht, zeigt die App eine Einrichtungsseite.
+// Steht hier «DEIN-PROJEKT», zeigt die App eine Einrichtungsseite.
 window.APP_CONFIG = {
-  SUPABASE_URL: 'https://DEIN-PROJEKT.supabase.co',
-  SUPABASE_ANON_KEY: 'DEIN-ANON-KEY',
+  SUPABASE_URL: 'https://ofdkpdmcfqnelqoaeshx.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_zht_zPGbarvvksrgM3uAzQ_UuCdskhD',
 
   // Name der App (Anmeldeseite, Titel)
   APP_NAME: 'Coaching',
