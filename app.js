@@ -469,7 +469,7 @@
     return {
       step: 'loading', tab: 'chat', phone: '', err: '', busy: false, typing: false, stick: false,
       session: null, me: null, people: [], chat: [], notes: [], prep: [],
-      drafts: {}, sel: null, openNotes: {}, editNote: null, prepEdit: false, pick: null, flash: null, addPerson: false, pfEdit: null, pfOpen: {}, assistants: [], editPerson: null, q: '', roleFilter: '', greeting: false
+      drafts: {}, sel: null, openNotes: {}, editNote: null, prepEdit: false, pick: null, flash: null, addPerson: false, pfEdit: null, assistants: [], editPerson: null, q: '', roleFilter: '', greeting: false
     };
   }
   var S = freshState();
@@ -914,20 +914,17 @@
     S.pfEdit = null;
     Object.keys(S.drafts).forEach(function (k) { if (/^pf-/.test(k)) delete S.drafts[k]; });
   }
-  // Aufklappbarer Abschnitt: Titel, Kurzinfo und Pfeil; der Inhalt entsteht erst beim Aufklappen
-  function accordion(id, title, summary, body) {
-    var open = !!S.pfOpen[id];
-    return '<section class="panel acc' + (open ? ' open' : '') + '"><button type="button" class="acc-head" data-act="pf-toggle" data-sec="' + id + '" aria-expanded="' + open + '">' +
-      '<span class="acc-title">' + title + '</span><span class="acc-sum">' + summary + '</span>' + ICON.down + '</button>' +
-      (open ? '<div class="acc-body">' + body + '</div>' : '') + '</section>';
-  }
   // Kachel oben im Profil: Bild mit Stift-Symbol am Rand, Name, Rolle
   function profileTile() {
     var m = S.me;
     return '<section class="panel ptile"><div class="avwrap">' + avatarHtml(m, true) +
       '<button type="button" class="avedit" data-act="pf-edit" data-field="photo" aria-label="' + esc(L('photoTitle')) + '">' + ICON.edit + '</button></div>' +
-      '<div class="ptinfo"><h2 class="ptname">' + esc(m.first) + '<br>' + esc(m.last) + '</h2>' +
-      '<div class="small">' + esc(fmtPhone(m.phone)) + '</div><div class="small">' + esc(m.email) + '</div></div></section>';
+      '<div class="ptable">' +
+      profileRow('name', L('firstName'), esc(m.first)) + profileRow('name', L('lastName'), esc(m.last)) +
+      profileRow('phone', L('phone'), esc(fmtPhone(m.phone))) + profileRow('email', L('email'), esc(m.email)) + '</div>' +
+      '<div class="ptmore"><button type="button" class="linkbtn" data-act="pf-edit" data-field="gender">' + L('gender') + '</button>' +
+      '<button type="button" class="linkbtn" data-act="pf-edit" data-field="traits">' + L('traits') + '</button>' +
+      '<button type="button" class="linkbtn" data-act="pf-edit" data-field="pin">PIN</button></div></section>';
   }
   function viewProfile() {
     var iosHint = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
@@ -939,9 +936,8 @@
     }
     return '<div class="top"><div><h1 class="pagetitle">' + L('profileTitle') + '</h1></div></div>' +
       profileTile() +
-      accordion('data', L('nameChange'), esc(fmtPhone(S.me.phone)), profileRows()) +
-      (S.me.role === 'talent' ? accordion('assistant', L('assistantTitle'), esc((S.assistants.filter(function (a) { return a.id === S.me.assistantId; })[0] || { name: '–' }).name), assistantBody()) : '') +
-      '<section class="panel"><div class="duo">' + fld(L('language'), langSelect()) + fld(L('addressTitle'), addressSelect()) + '</div><p class="small muted" style="margin:8px 0 0">' + L('languageHint') + '</p></section>' +
+      '<section class="panel"><div class="duo">' + fld(L('language'), langSelect()) + fld(L('addressTitle'), addressSelect()) + '</div><p class="small muted" style="margin:8px 0 0">' + L('languageHint') + '</p>' +
+      (S.me.role === 'talent' ? '<h2 style="margin-top:18px">' + L('assistantTitle') + '</h2>' + assistantBody() : '') + '</section>' +
       '<section class="panel"><h2>' + L('themeTitle') + '</h2><p>' + L('themeHint') + '</p>' + themeSelect() + '</section>' +
       install +
       '<button type="button" class="btn dangerbtn" data-act="logout">' + ICON.logout + L('logout') + '</button>' +
@@ -951,17 +947,6 @@
   function profileRow(field, label, valueHtml) {
     return '<div class="prow"><span class="plabel">' + label + '</span><span class="pval">' + valueHtml + '</span>' +
       (field ? '<button type="button" class="iconbtn" data-act="pf-edit" data-field="' + field + '" aria-label="' + esc(L('edit') + ': ' + label) + '">' + ICON.edit + '</button>' : '<span></span>') + '</div>';
-  }
-  function profileRows() {
-    var m = S.me;
-    return '<div class="ptable">' +
-      profileRow('name', L('nameLabel'), esc(m.name)) +
-      profileRow('gender', L('gender'), esc(genderLabel(m.gender))) +
-      profileRow('email', L('email'), esc(m.email)) +
-      profileRow('phone', L('phone'), esc(fmtPhone(m.phone))) +
-      profileRow('traits', L('traits'), m.traits ? '<span class="clamp">' + esc(m.traits) + '</span>' : '<span class="muted">–</span>') +
-      profileRow('pin', 'PIN', m.pinChanged ? '••••••' : '<span class="muted">' + L('pinStandard') + '</span>') +
-      profileRow(null, L('roleLabel'), '<span class="badge">' + esc(roleLabel(m.role)) + '</span>') + '</div>';
   }
   // Bearbeiten-Blatt für genau eine Angabe
   function profileSheetHtml() {
@@ -1311,7 +1296,6 @@
     }
     if (a === 'src-jump') { jumpTo(D.type, D.id); return; }
 
-    if (a === 'pf-toggle') { S.pfOpen[D.sec] = !S.pfOpen[D.sec]; render(); return; }
     if (a === 'pf-edit') { closeProfileSheet(); S.pfEdit = D.field; render(); return; }
     if (a === 'pf-sheet-close' || (a === 'pf-sheet-bg' && e.target === el)) { closeProfileSheet(); render(); return; }
     if (a === 'pf-sheet-bg') return;
