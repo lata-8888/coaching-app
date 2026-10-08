@@ -915,16 +915,27 @@
     Object.keys(S.drafts).forEach(function (k) { if (/^pf-/.test(k)) delete S.drafts[k]; });
   }
   // Kachel oben im Profil: Bild mit Stift-Symbol am Rand, Name, Rolle
+  function pfInput(k, label, type, val, extra) {
+    var cur = S.drafts['pf-' + k] !== undefined ? S.drafts['pf-' + k] : val;
+    return '<label class="pfrow"><span class="plabel">' + label + '</span><input class="input" name="' + k + '" type="' + type + '" data-keep="pf-' + k + '" data-orig="' + esc(val) + '" value="' + esc(cur) + '" ' + extra + '></label>';
+  }
+  function pfDirty() {
+    var m = S.me, o = { first: m.first, last: m.last, phone: m.phone, email: m.email };
+    return Object.keys(o).some(function (k) { return S.drafts['pf-' + k] !== undefined && S.drafts['pf-' + k] !== o[k]; });
+  }
   function profileTile() {
     var m = S.me;
     return '<section class="panel ptile"><div class="avwrap">' + avatarHtml(m, true) +
       '<button type="button" class="avedit" data-act="pf-edit" data-field="photo" aria-label="' + esc(L('photoTitle')) + '">' + ICON.edit + '</button></div>' +
-      '<div class="ptable">' +
-      profileRow('name', L('firstName'), esc(m.first)) + profileRow('name', L('lastName'), esc(m.last)) +
-      profileRow('phone', L('phone'), esc(fmtPhone(m.phone))) + profileRow('email', L('email'), esc(m.email)) + '</div>' +
-      '<div class="ptmore"><button type="button" class="linkbtn" data-act="pf-edit" data-field="gender">' + L('gender') + '</button>' +
-      '<button type="button" class="linkbtn" data-act="pf-edit" data-field="traits">' + L('traits') + '</button>' +
-      '<button type="button" class="linkbtn" data-act="pf-edit" data-field="pin">PIN</button></div></section>';
+      '<form class="pfform" data-form="pfprofile" autocomplete="off">' +
+      pfInput('first', L('firstName'), 'text', m.first, 'required maxlength="60"') +
+      pfInput('last', L('lastName'), 'text', m.last, 'required maxlength="60"') +
+      pfInput('phone', L('phone'), 'tel', m.phone, 'inputmode="tel" required') +
+      pfInput('email', L('email'), 'email', m.email, 'inputmode="email" required maxlength="120"') +
+      '<button class="btn" type="submit" data-pf-save="1"' + (pfDirty() ? '' : ' hidden') + '>' + L('nameSave') + '</button></form></section>';
+  }
+  function pinPanel() {
+    return '<section class="panel"><div class="ptable">' + profileRow('pin', 'PIN', S.me.pinChanged ? '••••••' : '<span class="muted">' + L('pinStandard') + '</span>') + '</div></section>';
   }
   function viewProfile() {
     var iosHint = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
@@ -939,6 +950,7 @@
       '<section class="panel"><div class="duo">' + fld(L('language'), langSelect()) + fld(L('addressTitle'), addressSelect()) + '</div><p class="small muted" style="margin:8px 0 0">' + L('languageHint') + '</p>' +
       (S.me.role === 'talent' ? '<h2 style="margin-top:18px">' + L('assistantTitle') + '</h2>' + assistantBody() : '') + '</section>' +
       '<section class="panel"><h2>' + L('themeTitle') + '</h2><p>' + L('themeHint') + '</p>' + themeSelect() + '</section>' +
+      pinPanel() +
       install +
       '<button type="button" class="btn dangerbtn" data-act="logout">' + ICON.logout + L('logout') + '</button>' +
       (S.pfEdit ? profileSheetHtml() : '');
@@ -951,29 +963,7 @@
   // Bearbeiten-Blatt für genau eine Angabe
   function profileSheetHtml() {
     var f = S.pfEdit, m = S.me, title = '', body = '';
-    if (f === 'name') {
-      title = L('nameLabel');
-      body = '<form data-form="pfield" data-field="name">' +
-        fld(L('firstName'), '<input class="input" name="first" data-keep="pf-first" value="' + esc(m.first) + '" required maxlength="60">') +
-        fld(L('lastName'), '<input class="input" name="last" data-keep="pf-last" value="' + esc(m.last) + '" required maxlength="60">') +
-        '<button class="btn" type="submit">' + L('nameSave') + '</button></form>';
-    } else if (f === 'gender') {
-      title = L('gender');
-      body = '<form data-form="pfield" data-field="gender">' + fld(L('gender'), genderSelect('gender', m.gender, true)) + '<button class="btn" type="submit">' + L('nameSave') + '</button></form>';
-    } else if (f === 'email') {
-      title = L('email');
-      body = '<form data-form="pfield" data-field="email">' +
-        fld(L('email'), '<input class="input" name="email" type="email" inputmode="email" data-keep="pf-email" value="' + esc(m.email) + '" required maxlength="120">') +
-        '<button class="btn" type="submit">' + L('nameSave') + '</button></form>';
-    } else if (f === 'traits') {
-      title = L('traits');
-      body = '<p>' + L('traitsHint') + '</p><form data-form="traits">' +
-        '<textarea class="input autogrow" name="traits" rows="4" maxlength="2000" data-keep="pf-traits" placeholder="' + esc(L('traitsPh')) + '" aria-label="' + esc(L('traits')) + '">' + esc(m.traits) + '</textarea>' +
-        '<button class="btn" type="submit" style="margin-top:10px">' + L('traitsSave') + '</button></form>';
-    } else if (f === 'phone') {
-      title = L('phoneChange');
-      body = '<p>' + L('phoneChangeNote') + '</p><form data-form="phone">' + fld(L('phoneNew'), phoneField('pf-phone', true)) + '<button class="btn" type="submit">' + L('phoneSave') + '</button></form>';
-    } else if (f === 'pin') {
+    if (f === 'pin') {
       title = L('pinChange');
       body = '<p>' + L('pinIntro') + '</p><form data-form="pin">' +
         fld(L('pinNew'), '<input class="input pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="new-password" data-keep="pf-pin" required>') +
@@ -1432,23 +1422,36 @@
       render();
       return;
     }
-    if (kind === 'phone') {
-      var np = normPhone(g('phone'));
-      if (!np) { toast(L('phoneInvalid')); return; }
-      if (!(await askConfirm(L('phoneChange'), L('confirmPhone', { phone: fmtPhone(np) }), false))) return;
-      S.busy = true;
-      var ur = await sb.rpc('update_own_phone', { new_phone: np });
-      S.busy = false;
-      if (ur.error) {
-        console.error(ur.error);
-        toast(/PHONE_TAKEN|duplicate|unique/i.test(ur.error.message || '') ? L('phoneTaken') : L('errFailed') + ': ' + String(ur.error.message || '').slice(0, 100));
-        return;
+    if (kind === 'pfprofile') {
+      var first = g('first'), last = g('last'), mail = g('email'), phn = String(f.get('phone') || '').trim(), m0 = S.me;
+      if (!first || !last) return;
+      if (!isEmail(mail)) { toast(L('emailInvalid')); return; }
+      var patch2 = {};
+      if (first !== m0.first || last !== m0.last) { patch2.first_name = first; patch2.last_name = last; }
+      if (mail !== m0.email) patch2.email = mail;
+      var newPhone = null;
+      if (phn !== m0.phone) { newPhone = normPhone(phn); if (!newPhone) { toast(L('phoneInvalid')); return; } if (newPhone === m0.phone) newPhone = null; }
+      if (Object.keys(patch2).length) {
+        var okP2 = await act(function () { return sb.from('profiles').update(patch2).eq('id', S.me.id); }, L('nameSaved'));
+        if (!okP2) { render(); return; }
+      }
+      ['first', 'last', 'email'].forEach(function (k) { delete S.drafts['pf-' + k]; });
+      if (newPhone) {
+        if (!(await askConfirm(L('phoneChange'), L('confirmPhone', { phone: fmtPhone(newPhone) }), false))) { render(); return; }
+        S.busy = true;
+        var ur = await sb.rpc('update_own_phone', { new_phone: newPhone });
+        S.busy = false;
+        if (ur.error) {
+          console.error(ur.error);
+          toast(/PHONE_TAKEN|duplicate|unique/i.test(ur.error.message || '') ? L('phoneTaken') : L('errFailed') + ': ' + String(ur.error.message || '').slice(0, 100));
+          render(); return;
+        }
+        try { await sb.auth.refreshSession(); } catch (x) { console.error(x); }
+        toast(L('phoneSaved'));
+        await refresh();
       }
       delete S.drafts['pf-phone'];
-      try { await sb.auth.refreshSession(); } catch (x) { console.error(x); }
-      toast(L('phoneSaved'));
-      closeProfileSheet();
-      await refresh(); render();
+      render();
       return;
     }
     if (kind === 'pin') {
@@ -1538,6 +1541,7 @@
     var t = e.target;
     if (!t) return;
     if (t.dataset && t.dataset.keep) { S.drafts[t.dataset.keep] = t.value; growField(t); }
+    if (t.closest && t.closest('[data-form="pfprofile"]')) { var sv = t.closest('form').querySelector('[data-pf-save]'); if (sv) sv.hidden = !pfDirty(); }
     if (t.dataset && t.dataset.adminQ) { S.q = t.value; render(); return; }
     if (t.name === 'phone' && t.closest('[data-form="auth"],[data-form="phone"],[data-form="person-add"]')) {
       var ccSel = t.form && t.form.elements && t.form.elements.cc;

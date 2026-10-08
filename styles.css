@@ -364,3 +364,11 @@ label.mini { cursor: pointer; display: inline-block; color: var(--ink); }
 .ptile .prow { grid-template-areas: "l b" "v b"; }
 .ptile .prow .plabel { grid-area: l; } .ptile .prow .pval { grid-area: v; font-weight: 600; } .ptile .prow .iconbtn { grid-area: b; }
 .ptmore { width: 100%; display: flex; gap: 16px; flex-wrap: wrap; }
+
+.ptile { flex-wrap: nowrap; align-items: flex-start; }
+.pfform { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.pfrow { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 8px; }
+.pfrow .plabel { color: var(--muted); font-size: .8rem; }
+.pfrow .input { min-width: 0; padding: 8px 10px; }
+.pfform .btn[hidden] { display: none; }
+@media (max-width: 420px) { .ptile { flex-direction: column; align-items: center; } .pfform { width: 100%; } }
